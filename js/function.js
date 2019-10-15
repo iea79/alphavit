@@ -38,7 +38,45 @@ $(document).ready(function() {
     // $('[name=tel]').inputmask("+9(999)999 99 99",{ showMaskOnHover: false });
     // formSubmit();
 
+    $('.partners__wrap').slick({
+        infinite: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        prevArrow: '<i class="icon_prev" />',
+        nextArrow: '<i class="icon_next" />',
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    // infinite: true,
+                    // dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
+
     checkOnResize();
+
+    $('select').select2();
 
 });
 
@@ -52,12 +90,42 @@ $(window).resize(function(event) {
 });
 
 function checkOnResize() {
-    fontResize();
+    // fontResize();
+    // stikyMenu();
 }
+
+function swichHomeTabs() {
+    $('[data-swich]').on('click', function() {
+        console.log($(this).data('swich'));
+        let id = $(this).data('swich');
+        $('[data-swich].active').removeClass('active');
+        $(this).addClass('active');
+
+        $('.homePanes__item.active').removeClass('active');
+        $(id).addClass('active');
+    })
+}
+
+swichHomeTabs();
+
+function openMobileNav() {
+    $('.navbar__toggle').on('click', function() {
+        let wrapp = $('.header__bottom');
+
+        wrapp.toggleClass('open');
+    });
+};
+openMobileNav();
 
 // Stiky menu // Липкое меню. При прокрутке к элементу #header добавляется класс .stiky который и стилизуем
 function stikyMenu() {
-    let HeaderTop = $('header').offset().top + $('.home').innerHeight();
+    let wrapp;
+    if (isXsWidth()) {
+        wrapp = $('.header');
+    } else {
+        wrapp = $('.header__bottom');
+    };
+    let HeaderTop = wrapp.offset().top + $('.home').innerHeight();
     let currentTop = $(window).scrollTop();
 
     setNavbarPosition();
@@ -70,9 +138,9 @@ function stikyMenu() {
         currentTop = $(window).scrollTop();
 
         if( currentTop > HeaderTop ) {
-            $('header').addClass('stiky');
+            wrapp.addClass('stiky');
         } else {
-            $('header').removeClass('stiky');
+            wrapp.removeClass('stiky');
         }
 
         $('.navbar__link').each(function(index, el) {
@@ -90,6 +158,297 @@ function stikyMenu() {
         });
     }
 };
+// stikyMenu();
+
+function swichTabs() {
+	let tab = $('[data-tab]'),
+		pane = $('[data-pane]'),
+        more = $('.js_more'),
+        item;
+
+	tab.on('click', function(e) {
+		// e.preventDefault();
+
+		// $(this).attr('data-tab') // data-tab
+		let id = $(this).data('tab') // data-tab
+
+		tab.removeClass('active');
+		$(this).addClass('active');
+
+        switch (id) {
+            case "car":
+                swichItem("car");
+                break;
+            case "cargo":
+                swichItem("cargo");
+                break;
+            case "spec":
+                swichItem("spec");
+                break;
+            case "hardware":
+                swichItem("hardware");
+                break;
+            case "air":
+                swichItem("air");
+                break;
+            case "water":
+                swichItem("water");
+                break;
+            case "house":
+                swichItem("house");
+                break;
+            case "back":
+                swichItem("back");
+                break;
+            case "all":
+                // swichItem("back");
+                showAllItem();
+                break;
+            default:
+
+        }
+
+	});
+
+    more.on('click', function() {
+        let current = $('[data-tab].active').data('tab');
+        // console.log(current);
+        if (current == 'all') {
+            $('[data-filter]').removeClass('hidden');
+        } else {
+            $('[data-filter='+current+']').removeClass('hidden');
+        }
+        $(this).hide();
+    })
+
+    function showAllItem() {
+        item = $('[data-filter]');
+        item.each(function(i) {
+            if (i < 4) {
+                // console.log($(this).data('filter'));
+                $(this).removeClass('hidden');
+                // more.hide();
+            } else {
+                $(this).addClass('hidden');
+                // more.show();
+            }
+        });
+        console.log(item.length);
+        showMoreBtn(item.length);
+    }
+    showAllItem();
+
+    function swichItem(id) {
+        $('[data-filter]').addClass('hidden');
+
+        item = $('[data-filter="'+id+'"]');
+        item.each(function(i) {
+            if (i < 4) {
+                // console.log($(this).data('filter'));
+                $(this).removeClass('hidden');
+                // more.hide();
+            } else {
+                $(this).addClass('hidden');
+                // more.show();
+            }
+        });
+        console.log(item.length);
+        showMoreBtn(item.length);
+    }
+
+    function showMoreBtn(i) {
+        if (i < 4) {
+            more.hide();
+        } else {
+            more.show();
+        }
+    }
+
+};
+swichTabs();
+
+function initMap() {
+    var compCenter = {lat: 56.34431322385145, lng: 43.92857064999998};
+    var center = {lat: 56.34431322385145, lng: 43.88857064999998};
+    var zoom = 13;
+
+    if (isXsWidth()) {
+        center = compCenter;
+        zoom = 12;
+    }
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: zoom,
+        center: center,
+        styles: [
+            {
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#f5f5f5"
+                    }
+                ]
+            },
+            {
+                "elementType": "labels.icon",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#616161"
+                    }
+                ]
+            },
+            {
+                "elementType": "labels.text.stroke",
+                "stylers": [
+                    {
+                        "color": "#f5f5f5"
+                    }
+                ]
+            },
+            {
+                "featureType": "administrative.land_parcel",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#bdbdbd"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#eeeeee"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#757575"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.park",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#e5e5e5"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.park",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#9e9e9e"
+                    }
+                ]
+            },
+            {
+                "featureType": "road",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#ffffff"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#757575"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#dadada"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#616161"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.local",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#9e9e9e"
+                    }
+                ]
+            },
+            {
+                "featureType": "transit.line",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#e5e5e5"
+                    }
+                ]
+            },
+            {
+                "featureType": "transit.station",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#eeeeee"
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#c9c9c9"
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#9e9e9e"
+                    }
+                ]
+            }
+        ]
+    });
+
+    var marker = new google.maps.Marker({
+        position: compCenter,
+        map: map,
+        icon: 'img/marker.png'
+    });
+
+}
 
 // Scroll to ID // Плавный скролл к элементу при нажатии на ссылку. В ссылке указываем ID элемента
 function srollToId() {
@@ -100,7 +459,8 @@ function srollToId() {
         }
         return false;
     });
-}
+};
+srollToId();
 
 function fontResize() {
     var windowWidth = $(window).width();
@@ -147,141 +507,71 @@ function uploadYoutubeVideo() {
 };
 
 
-// Деление чисел на разряды Например из строки 10000 получаем 10 000
-// Использование: thousandSeparator(1000) или используем переменную.
-// function thousandSeparator(str) {
-//     var parts = (str + '').split('.'),
-//         main = parts[0],
-//         len = main.length,
-//         output = '',
-//         i = len - 1;
-
-//     while(i >= 0) {
-//         output = main.charAt(i) + output;
-//         if ((len - i) % 3 === 0 && i > 0) {
-//             output = ' ' + output;
-//         }
-//         --i;
-//     }
-
-//     if (parts.length > 1) {
-//         output += '.' + parts[1];
-//     }
-//     return output;
-// };
-
-
-// Хак для яндекс карт втавленных через iframe
-// Страуктура:
-//<div class="map__wrap" id="map-wrap">
-//  <iframe style="pointer-events: none;" src="https://yandex.ru/map-widget/v1/-/CBqXzGXSOB" width="1083" height="707" frameborder="0" allowfullscreen="true"></iframe>
-//</div>
-// Обязательное свойство в style которое и переключет скрипт
-// document.addEventListener('click', function(e) {
-//     var map = document.querySelector('#map-wrap iframe')
-//     if(e.target.id === 'map-wrap') {
-//         map.style.pointerEvents = 'all'
-//     } else {
-//         map.style.pointerEvents = 'none'
-//     }
-// })
-
 // Простая проверка форм на заполненность и отправка аяксом
-// function formSubmit() {
-//     $("[type=submit]").on('click', function (e){
-//         e.preventDefault();
-//         var form = $(this).closest('.form');
-//         var url = form.attr('action');
-//         var form_data = form.serialize();
-//         var field = form.find('[required]');
-//         // console.log(form_data);
+function formSubmit() {
+    $("[type=submit]").on('click', function (e){
+        e.preventDefault();
+        var form = $(this).closest('.form');
+        var url = form.attr('action');
+        var form_data = form.serialize();
+        var field = form.find('[required]');
+        // console.log(form_data);
 
-//         empty = 0;
+        empty = 0;
 
-//         field.each(function() {
-//             if ($(this).val() == "") {
-//                 $(this).addClass('invalid');
-//                 // return false;
-//                 empty++;
-//             } else {
-//                 $(this).removeClass('invalid');
-//                 $(this).addClass('valid');
-//             }
-//         });
+        field.each(function() {
+            if ($(this).val() == "") {
+                $(this).addClass('invalid');
+                // return false;
+                empty++;
+            } else {
+                $(this).removeClass('invalid');
+                $(this).addClass('valid');
+            }
+        });
 
-//         // console.log(empty);
+        // console.log(empty);
 
-//         if (empty > 0) {
-//             return false;
-//         } else {
-//             $.ajax({
-//                 url: url,
-//                 type: "POST",
-//                 dataType: "html",
-//                 data: form_data,
-//                 success: function (response) {
-//                     // $('#success').modal('show');
-//                     // console.log('success');
-//                     console.log(response);
-//                     // console.log(data);
-//                     // document.location.href = "success.html";
-//                 },
-//                 error: function (response) {
-//                     // $('#success').modal('show');
-//                     // console.log('error');
-//                     console.log(response);
-//                 }
-//             });
-//         }
+        if (empty > 0) {
+            return false;
+        } else {
+            $.ajax({
+                url: url,
+                type: "POST",
+                dataType: "html",
+                data: form_data,
+                success: function (response) {
+                    // // $('#success').modal('show');
+                    // // console.log('success');
+                    // console.log(response);
+                    // // console.log(data);
+                    // // document.location.href = "success.html";
+                },
+                error: function (response) {
+                    // $('#success').modal('show');
+                    // console.log('error');
+                    // console.log(response);
+                }
+            });
+        }
 
-//     });
+    });
 
-//     $('[required]').on('blur', function() {
-//         if ($(this).val() != '') {
-//             $(this).removeClass('invalid');
-//         }
-//     });
+    $('[required]').on('blur', function() {
+        if ($(this).val() != '') {
+            $(this).removeClass('invalid');
+        }
+    });
 
-//     $('.form__privacy input').on('change', function(event) {
-//         event.preventDefault();
-//         var btn = $(this).closest('.form').find('.btn');
-//         if ($(this).prop('checked')) {
-//             btn.removeAttr('disabled');
-//             // console.log('checked');
-//         } else {
-//             btn.attr('disabled', true);
-//         }
-//     });
-// }
-
-
-// Проверка на возможность ввода только русских букв, цифр, тире и пробелов
-// $('#u_l_name').on('keypress keyup', function () {
-//     var that = this;
-//
-//     setTimeout(function () {
-//         if (that.value.match(/[ -]/) && that.value.length == 1) {
-//             that.value = '';
-//         }
-//
-//         if (that.value.match(/-+/g)) {
-//             that.value = that.value.replace(/-+/g, '-');
-//         }
-//
-//         if (that.value.match(/ +/g)) {
-//             that.value = that.value.replace(/ +/g, ' ');
-//         }
-//
-//         var res = /[^а-яА-Я -]/g.exec(that.value);
-//
-//         if (res) {
-//             removeErrorMsg('#u_l_name');
-//             $('#u_l_name').after('<div class="j-required-error b-check__errors">Измените язык ввода на русский</div>');
-//         }
-//         else {
-//             removeErrorMsg('#u_l_name');
-//         }
-//
-//         that.value = that.value.replace(res, '');
-//     }, 0);
-// });
+    $('.form__privacy input').on('change', function(event) {
+        event.preventDefault();
+        var btn = $(this).closest('.form').find('.btn');
+        if ($(this).prop('checked')) {
+            btn.removeAttr('disabled');
+            // console.log('checked');
+        } else {
+            btn.attr('disabled', true);
+        }
+    });
+}
+formSubmit();

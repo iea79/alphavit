@@ -1,0 +1,190 @@
+$icomoon-font-family: "alphabet" !default;
+$icomoon-font-path: "../fonts" !default;
+
+$icon_mail: "\e912";
+$icon_phone: "\e913";
+$icon_list: "\e900";
+$icon_next: "\e901";
+$icon_prev: "\e911";
+$icon_plus: "\e902";
+$icon_sell: "\e903";
+$icon_caret: "\e904";
+$icon_cargo: "\e905";
+$icon_close: "\e906";
+$icon_marker: "\e907";
+$icon_comment: "\e908";
+$icon_tab-car: "\e909";
+$icon_tab-build: "\e90a";
+$icon_tab-cargo: "\e90b";
+$icon_tab-money: "\e90c";
+$icon_tab-water: "\e90d";
+$icon_tab-spectech: "\e90e";
+$icon_tab-helicopter: "\e90f";
+$icon_tab-manufacture: "\e910";
+
+@font-face {
+    font-family: '#{$icomoon-font-family}';
+    src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?vhbe20") format('truetype'), url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff?vhbe20") format('woff'), url("#{$icomoon-font-path}/#{$icomoon-font-family}.svg?vhbe20##{$icomoon-font-family}") format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon_"],
+[class*=" icon_"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: '#{$icomoon-font-family}' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon_list {
+    &:before {
+        content: $icon_list;
+    }
+}
+
+.icon_next {
+    &:before {
+        content: $icon_next;
+    }
+}
+
+.icon_prev {
+    &:before {
+        content: $icon_prev;
+    }
+}
+
+.icon_plus {
+    &:before {
+        content: $icon_plus;
+    }
+}
+
+.icon_sell {
+    &:before {
+        content: $icon_sell;
+    }
+}
+
+.icon_caret {
+    &:before {
+        content: $icon_caret;
+    }
+}
+
+.icon_cargo {
+    &:before {
+        content: $icon_cargo;
+    }
+}
+
+.icon_close {
+    &:before {
+        content: $icon_close;
+    }
+}
+
+.icon_marker {
+    &:before {
+        content: $icon_marker;
+    }
+}
+
+.icon_comment {
+    &:before {
+        content: $icon_comment;
+    }
+}
+
+.icon_tab-car {
+    // margin-bottom: -0.3em;
+
+    &:before {
+        content: $icon_tab-car;
+        font-size: 1.6em;
+        @media (min-width: 768px) {
+            margin-top: -0.1em;
+            margin-left: -.1em;
+        }
+    }
+}
+
+.icon_tab-build {
+    &:before {
+        content: $icon_tab-build;
+        font-size: 1.3em;
+    }
+}
+
+.icon_tab-cargo {
+    &:before {
+        content: $icon_tab-cargo;
+        // font-size: 1em;
+        @media (min-width: 768px) {
+            margin-top: 0.15em;
+            margin-left: -.15em;
+        }
+    }
+}
+
+.icon_tab-money {
+    &:before {
+        content: $icon_tab-money;
+        font-size: 1.5em;
+        @media (min-width: 768px) {
+            margin-top: -.1em;
+            margin-left: -.1em;
+        }
+    }
+}
+
+.icon_tab-water {
+    &:before {
+        content: $icon_tab-water;
+        font-size: 1.3em;
+        @media (min-width: 768px) {
+            margin-left: -0.2em;
+        }
+    }
+}
+
+.icon_tab-spectech {
+    &:before {
+        content: $icon_tab-spectech;
+        font-size: 1.2em;
+        @media (min-width: 768px) {
+            margin-left: -.15em;
+        }
+    }
+}
+
+.icon_tab-helicopter {
+    &:before {
+        content: $icon_tab-helicopter;
+        font-size: 1.15em;
+        @media (min-width: 768px) {
+            margin-left: -.1em;
+            margin-top: 0.1em;
+        }
+    }
+}
+
+.icon_tab-manufacture {
+    &:before {
+        content: $icon_tab-manufacture;
+        font-size: 1.2em;
+        @media (min-width: 768px) {
+            margin-left: -0.2em;
+        }
+    }
+}

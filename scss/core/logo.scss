@@ -1,0 +1,56 @@
+.logo {
+    display: flex;
+    color: #717171;
+    text-decoration: none;
+
+    img {
+        flex: none;
+        width: 28px;
+        margin-right: 9px;
+        height: auto;
+
+        @media (min-width: 992px) {
+            margin-right: 13px;
+            width: 40px;
+        }
+    }
+
+    &__text {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 0.9;
+
+        @media (min-width: 992px) {
+            font-size: 27px;
+        }
+
+        small {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.42em;
+            font-weight: 400;
+            // padding-left: 0;
+            margin-left: -1px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+    }
+
+    &__subtitle {
+        font-size: 13px;
+        display: none;
+
+        @media (min-width: 1200px) {
+            font-size: 15px;
+        }
+
+        @media (min-width: 992px) {
+            display: block;
+        }
+    }
+
+    .header & {
+        // color: inherit;
+    }
+
+}

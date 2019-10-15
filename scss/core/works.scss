@@ -1,0 +1,184 @@
+.works {
+    padding-top: 30px;
+    margin-bottom: 30px;
+
+    @media (min-width: 768px) {
+        margin-bottom: 64px;
+    }
+
+    .section {
+        &__title {
+            margin-bottom: 24px;
+        }
+
+        &__sub {}
+
+    }
+
+    &__list {
+        display: flex;
+        margin: 30px -15px;
+
+        @media (min-width: 768px) {
+            margin: 68px -15px 40px;
+        }
+        @media (max-width: 767px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__item {
+        border: 1px solid #D9D9D9;
+        border-radius: 10px;
+        padding: 30px 20px;
+        margin: 15px;
+        position: relative;
+        width: 100%;
+
+        @media (min-width: 768px) {
+            padding: 20px 20px 20px 25px;
+            width: 25%;
+        }
+
+        @media (min-width: 992px) {
+            padding: 45px 36px 37px 45px;
+        }
+
+        &.hidden {
+            display: none;
+        }
+
+        &:not(:last-child) {
+            &:after,
+            &:before {
+                content: '';
+                position: absolute;
+
+            }
+
+            &:before {
+                border-radius: 50%;
+                border: 1px solid #D9D9D9;
+                width: 60px;
+                height: 60px;
+                z-index: 1;
+
+                @media (min-width: 768px) {
+                    top: 50%;
+                    right: -46px;
+                    // margin-right: -46px;
+                    margin-top: -30px;
+                }
+                @media (max-width: 767px) {
+                    left: 50%;
+                    margin-left: -30px;
+                    bottom: -46px;
+                }
+            }
+
+            &:after {
+                // border-left: 1px solid #D9D9D9;
+                // border-right: 1px solid #D9D9D9;
+                background-color: #fff;
+                z-index: 2;
+                @media (min-width: 768px) {
+                    width: 30px;
+                    top: 10px;
+                    bottom: 10px;
+                    right: -31px;
+                }
+                @media (max-width: 767px) {
+                    bottom: -31px;
+                    height: 30px;
+                    left: 0;
+                    right: 0;
+                }
+            }
+
+            .icon_next {
+                position: absolute;
+                border-radius: 50%;
+                border: 1px solid #D9D9D9;
+                color: #FF4B38;
+                font-size: 11px;
+                width: 32px;
+                height: 32px;
+                z-index: 4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:before {
+                    display: block;
+                    margin-left: 3px;
+                    margin-top: 1px;
+                }
+                @media (min-width: 768px) {
+                    right: -32px;
+                    top: 50%;
+                    margin-top: -16px;
+                }
+                @media (max-width: 767px) {
+                    left: 50%;
+                    margin-left: -16px;
+                    bottom: -31px;
+                    transform: rotate(90deg);
+                }
+            }
+
+            .works__text {
+                &:after {
+                    content: '';
+                    z-index: 3;
+                    position: absolute;
+                    background-color: #fff;
+                    width: 48px;
+                    height: 32px;
+
+                    @media (min-width: 768px) {
+                        width: 32px;
+                        height: 48px;
+                        right: -32px;
+                        top: 50%;
+                        margin-top: -24px;
+                    }
+                    @media (max-width: 767px) {
+                        bottom: -32px;
+                        left: 50%;
+                        margin-left: -24px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__icon {
+        font-size: 34px;
+        color: #FF4B38;
+        margin-bottom: 11px;
+
+        .icon_comment {}
+
+        .icon_sell {}
+
+        .icon_list {}
+
+        .icon_cargo {}
+    }
+
+    &__text {
+        font-weight: bold;
+        line-height: 1.5;
+        font-size: 15px;
+
+        a {
+            color: #FF4B38;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+}

@@ -1,3 +1,8 @@
+block variable
+    -var frontVersion = '1.2';
+    -var email = 'info@sitename.ru';
+    -var phone = '+7 (495) 569 63 63';
+
 <!DOCTYPE html>
 html(lang="en")
 head
@@ -6,35 +11,440 @@ head
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Document
 
-    link(rel="stylesheet", type="text/css", href="css/style.css")
+    link(rel="stylesheet", type="text/css", href="css/style.css?"+frontVersion+"")
 body
     header.header
-        .header__content
-            .header__left
-                a.logo(href="/")
-                    img(src="img/logo.png", alt="alt")
-            nav.header__right
-                ul.navbar
-                    - var n = 0;
-                    -for (i=0; i<5; i++) {
-                        li.navbar__item
-                            a.navbar__link(href="#") Page #{i}
-                    -};
-                    //- while n < 6
-                    //-     li.navbar__item
-                    //-         a.navbar__link(href="#")= "Page " + n++
+        .container_center
+            .header__top
+                .header__left
+                    .navbar__toggle
+                    a.logo(href="/")
+                        img(src="img/logo.svg", alt="АЛФАВИТ - Лизинговое агенство")
+                        span.logo__text АЛФАВИТ
+                            small Лизинговое агенство
+                    .logo__subtitle Экономим ваши деньги и время!
+
+                .header__contact
+                    .header__contactItem
+                        a.email(href="mailto: "+email+"")= email
+                    .header__contactItem
+                        a.phone(href="tel: "+phone+"")
+                            b= phone
+                    .header__contactItem.desktop
+                        button.btn.btn_outline.btn_contrast(type="button" data-toggle="modal" data-target="#callback") Заказать звонок
+
+            .header__bottom
+                .navbar__toggle
+                nav.header__nav
+                    ul.navbar
+                        -var nav = [{name: 'Почему мы', anchor: 'about'},{name: 'Акции', anchor: 'sell'},{name: 'Преимущества', anchor: 'profit'},{name: 'Схема работы ', anchor: 'works'},{name: 'Партнёры', anchor: 'partners'},{name: 'Контакты', anchor: 'contact'}];
+                        each item in nav
+                            li.navbar__item
+                                a.navbar__link(href="#"+item.anchor+"" data-scroll-to)= item.name
+                .header__action
+                    button.btn.btn_plus(type="button" data-toggle="modal" data-target="#callback") Подать заявку
 
     main.main_content
-        .container_center
+        // begin home
+        section#home.home
+            .homePanes
+                -var homePane = [{color: '#0159dd', title: 'Лизинг', sub: 'легковых автомобилей', list: ['от 500 000 руб.','до 5 лет','от 5%','от 5% годовых','3 рабочих дня'], img: 'home-auto.png'},{color: '#323337', title: 'Лизинг', sub: 'Грузового транспорта', list: ['от 500 000 руб.','до 5 лет','от 5%','от 5% годовых','3 рабочих дня'], img: 'home-cargo.png'},{color: '#f8b200', title: 'Лизинг', sub: 'спецтехники', list: ['от 500 000 руб.','до 5 лет','от 5%','от 5% годовых','3 рабочих дня'], img: 'home-spectech.png'},{color: '#b5536a', title: 'Лизинг', sub: 'оборудования', list: ['от 500 000 руб.','до 5 лет','от 20%','от 7% годовых','3-5 рабочих дней'], img: 'home-factory.png'},{color: '#d01103', title: 'Лизинг', sub: 'Воздушного транспорта', list: ['от 5 000 000 руб.','до 5 лет','от 20%','от 5% годовых','5-7 рабочих дней'], img: 'home-helicopter.png'},{color: '#063675', title: 'Лизинг', sub: 'водного транспорта', list: ['от 5 000 000 руб.','до 5 лет','от 20%','от 5% годовых','1-2 недели'], img: 'home-yacht.png'},{color: '#0d1730', title: 'Лизинг', sub: 'Коммерческой недвижимости', list: ['от 5 000 000 руб.','до 5 лет','от 20%','от 5% годовых','5-7 рабочих дней'], img: 'home-building.png'},{color: '#6b5f88', title: 'Возвратный лизинг', sub: '', list: ['от 1 000 000 руб.','до 5 лет','от 0%','от 5% годовых','3-5 рабочих дней'], img: 'home-money.png'}];
+                each item, i in homePane
+                    case i
+                        when 0
+                            -var actClass = ' active'
+                        default
+                            -var actClass = ''
+                    .homePanes__item(id="home-"+i+"" class= actClass)
+                        .homePanes__bg(style="background-color: "+item.color+"")
+                        .homePanes__bgText Лизинг
+                        .homePanes__content.container_center
+                            .homePanes__descr
+                                .homePanes__title= item.title
+                                .homePanes__sub= item.sub
+                                .homePanes__list
+                                    each value, count in item.list
+                                        .homePanes__listRow
+                                            case count
+                                                when 0: .homePanes__listLabel Стоимость
+                                                when 1: .homePanes__listLabel Срок
+                                                when 2: .homePanes__listLabel Авансовый платёж
+                                                when 3: .homePanes__listLabel Удорожание в год
+                                                when 4: .homePanes__listLabel Срок рассмотрения
+                                            .homePanes__listValue= value
+                            .homePanes__img
+                                img(src="img/"+item.img+"", alt="")
 
-            .grid
-                .grid__item Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, in.
-                .grid__item Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo numquam sequi officiis. Quia sed modi voluptatem, aut rem possimus at ipsa nobis iure non corporis nulla suscipit praesentium quos numquam quasi magni delectus eius illo, harum hic id! Laboriosam culpa recusandae nesciunt ab natus molestiae porro reiciendis, eveniet architecto temporibus!
-                .grid__item Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt fugiat, pariatur, explicabo ut quidem deleniti velit sed error dolor! Voluptates dignissimos consectetur repudiandae ipsam. Iusto, rerum, quam! Corporis, nisi, inventore?
+            .container_center
+                .homeTabs
+                    -var homeTabs = [{img: 'tab-car', name: 'Легковые автомобили'},{img: 'tab-cargo', name: 'Грузовые автомобили'},{img: 'tab-spectech', name: 'Спецтехника'},{img: 'tab-manufacture', name: 'Оборудование'},{img: 'tab-helicopter', name: 'Воздушный транспорт'},{img: 'tab-water', name: 'Водный транспорт'},{img: 'tab-build', name: 'Недвижимость'},{img: 'tab-money', name: 'Возвратный лизинг'}];
+                    each item, i in homeTabs
+                        case i
+                            when 0
+                                -var tabActive = ' active';
+                            default
+                                -var tabActive = '';
+                        .homeTabs__item(class= tabActive data-swich="#home-"+i+"")
+                            .homeTabs__img
+                                i(class="icon_"+item.img+"")
+                            .homeTabs__name= item.name
+
+        // end home
+
+        // begin about
+        section#about.about.section
+            .container_center
+                h2.section__title(data-sub="Почему мы") Почему мы
+                .about__content
+                    .about__img
+                        img(src="img/about.png", alt="")
+                    .about__text
+                        p
+                            b АЛФАВИТ 
+                            |– лизинговое агентство, это онлайн сервис для подачи заявки на лизинг и получения оптимально выгодного предложения. АЛФАВИТ, потому, что от А до Я, наша платформа объединяет все лизинговые компании России, позволяет нам работать со всеми категориями клиентов и видами предметов лизинга. Партнерская сеть объединяет более 50 лизинговых компаний федерального и региональных масштабов.
+
+                        p
+                            b Самый выгодный расчет на лизинг. 
+                            |Благодаря постоянному и углубленному исследованию рынка лизинга, мы знаем, где предложат лучшие финансовые условия для конкретного клиента, с учетом его потребностей и специфики бизнеса. На основании понимания рынка и опыта работы в лизинге с 2006 года, помогаем нашим клиентам найти наиболее выгодные, а иногда и эксклюзивные условия сотрудничества, при этом отстаивая интересы лизингополучателя.
+
+                        p
+                            b Быстрое решение. 
+                            |После 10-ти минутного разговора с нашим специалистом, вы сможете получить ответ о возможностях по финансированию вашего проекта. В течение 1-2 рабочих дней отправим вам 2-3 самых лучших предложения по лизингу, выбирать из лучшего будете сами. Сделка от обращения до получения предмета лизинга во владение, при условии наличия имущества у поставщика осуществляется в среднем от 1 до 2 рабочих недель.
+
+                        p
+                            b Консалтинг. 
+                            |Итак, мы экономим ваше время и деньги, мы подберем для вас лучшие условия на рынке, поможем согласовать договоры, сопроводим сделку до передачи предмета лизинга вам в пользование. Также с радостью готовы вас консультировать в течения действия всего срока договора лизинга.
+
+                .about__descr Если у вас уже есть предложение от лизинговой компании, мы готовы проконсультировать вас по данному предложению, рассказать о возможных подводных камнях, а также готовы найти более выгодные условия в других лизинговых компаниях – партнерах.
+
+        // end about
+
+        // begin sell
+        section#sell.sell.section
+            .container_center
+                h2.section__title(data-sub="Акции") Акции, выгодные предложения
+
+                .sell__list
+                    //- - var sell = [{name}]
+                    .sell__item
+                        .sell__img
+                            img(src="img/sell-1.jpg", alt="")
+                        .sell__descr
+                            .sell__name Вода зовёт!
+                            .sell__date с 1 августа до 31 сентября
+                            .sell__text Водный транспорт в лизинг на выгодных условиях. Найдёте выгоднее? Вернём разницу
+                            .sell__action
+                                button.btn.btn_plus(type="button") Подать заявку
+                    .sell__item
+                        .sell__img
+                            img(src="img/sell-2.jpg", alt="")
+                        .sell__descr
+                            .sell__name Спецтехника по спеццене
+                            .sell__date с 1 августа до 31 сентября
+                            .sell__text Водный транспорт в лизинг на выгодных условиях. Найдёте выгоднее? Вернём разницу
+                            .sell__action
+                                button.btn.btn_plus(type="button") Подать заявку
+                    .sell__item
+                        .sell__img
+                            img(src="img/sell-3.jpg", alt="")
+                        .sell__descr
+                            .sell__name Вертолёт в каждую семью!
+                            .sell__date с 1 августа до 31 сентября
+                            .sell__text Водный транспорт в лизинг на выгодных условиях. Найдёте выгоднее? Вернём разницу
+                            .sell__action
+                                button.btn.btn_plus(type="button") Подать заявку
+
+        // end sell
+
+        // begin profit
+        section#profit.profit.section
+            .container_center
+
+
+                .profit__content
+                    .profit__text
+                        h2.section__title(data-sub="Преимущества") Наши преимущества — ваши выгоды!
+                        .profit__img
+                            img(src="img/profit.jpg", alt="")
+                        .profit__list
+                            p
+                                b Вся Россия. 
+                                |Работаем по всей территории РФ, включая Крым и Кавказ.
+                            p
+                                b Скидки на авто и технику от дилеров и производителей, 
+                                |т.к. косвенно мы являемся оптовыми покупателями.
+                            p
+                                b Консалтинг. 
+                                |Качественная консультационная поддержка на любом этапе обращения.
+                            p
+                                b Быстро. 
+                                |Зная рынок, мы за 1-2 дня сделаем за вас работу, на которую вы потратите 2-3 недели, выберем лучшие условия от 50 лизинговых компаний партнеров, и вы не ощутите их назойливость.
+                            p
+                                b Дешево. 
+                                |Если у вас уже есть предложение от лизинговой компании, то мы готовы найти для вас условия лучше!
+                            p
+                                b Бесплатно для вас. 
+                                |Наша услуга бесплатна для лизингополучателя, так как, материальное вознаграждение мы получаем от лизинговых компаний, которым даем возможность заключить новые сделки и берем на себя часть их издержек связанных с привлечением новых клиентов.
+                        .profit__sub Если у вас уже есть предложение от лизинговой компании, то мы готовы найти для вас лучше!
+                        .profit__action
+                            button.btn.btn_outline(type="button") Подробнее о сотрудничестве
+
+        // end profit
+
+        // begin works
+        section#works.works.section
+            .container_center
+                h2.section__title(data-sub="Схема работы") Схема работы
+                .section__sub С нами максимально удобно! Сделайте всего 4 шага
+
+                .works__list
+                    .works__item
+                        .icon_next
+                        .works__icon
+                            i.icon_comment
+                        .works__text 01. Подаёте 
+                            a(href="#") заявку 
+                            |на лизинг и вам перезванивает персональный менеджер.
+                    .works__item
+                        .icon_next
+                        .works__icon
+                            i.icon_sell
+                        .works__text 02. Находим самые выгодные предложения, а вы выбираете лучшее! 
+                    .works__item
+                        .icon_next
+                        .works__icon
+                            i.icon_list
+                        .works__text 03. Подписываете договор, платите аванс.
+                    .works__item
+                        .works__icon
+                            i.icon_cargo
+                        .works__text 04. Получаете предмет лизинга.
+
+        // end works
+
+        // begin project
+        section#project.project
+            .container_center
+                h2.section__title(data-sub="Проекты") Реализованные проекты
+
+                .projectTabs
+                    .projectTabs__item.active(data-tab="all") Все
+                    .projectTabs__item(data-tab="car") Легковые
+                    .projectTabs__item(data-tab="cargo") Грузовые
+                    .projectTabs__item(data-tab="spec") Спецтехника
+                    .projectTabs__item(data-tab="hardware") Оборудование
+                    .projectTabs__item(data-tab="air") Воздушный транспорт
+                    .projectTabs__item(data-tab="water") Водный транспорт
+                    .projectTabs__item(data-tab="house") Недвижимость
+                    .projectTabs__item(data-tab="back") Возвратный
+
+                .projectPanes
+                    .projectPanes__panel.active#proj-1
+                        .projectPanes__list
+                            .projectPanes__item(data-filter="car")
+                                .projectPanes__plate
+                                    .projectPanes__img(style="background-image: url(img/project.jpg)")
+                                        //- img(src="img/project.jpg", alt="")
+                                    .projectPanes__descr
+                                        .projectPanes__name Лизинг спецтехники
+                                        .projectPanes__text Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.
+                                        a.projectPanes__detailed(href="#") Подробнее
+                            .projectPanes__item(data-filter="cargo")
+                                .projectPanes__plate
+                                    .projectPanes__img(style="background-image: url(img/project.jpg)")
+                                        //- img(src="img/project.jpg", alt="")
+                                    .projectPanes__descr
+                                        .projectPanes__name Лизинг спецтехники
+                                        .projectPanes__text Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.
+                                        a.projectPanes__detailed(href="#") Подробнее
+                            .projectPanes__item(data-filter="spec")
+                                .projectPanes__plate
+                                    .projectPanes__img(style="background-image: url(img/project.jpg)")
+                                        //- img(src="img/project.jpg", alt="")
+                                    .projectPanes__descr
+                                        .projectPanes__name Лизинг спецтехники
+                                        .projectPanes__text Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.
+                                        a.projectPanes__detailed(href="#") Подробнее
+                            .projectPanes__item(data-filter="spec")
+                                .projectPanes__plate
+                                    .projectPanes__img(style="background-image: url(img/project.jpg)")
+                                        //- img(src="img/project.jpg", alt="")
+                                    .projectPanes__descr
+                                        .projectPanes__name Лизинг спецтехники
+                                        .projectPanes__text Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.
+                                        a.projectPanes__detailed(href="#") Подробнее
+                            .projectPanes__item(data-filter="hardware")
+                                .projectPanes__plate
+                                    .projectPanes__img(style="background-image: url(img/project.jpg)")
+                                        //- img(src="img/project.jpg", alt="")
+                                    .projectPanes__descr
+                                        .projectPanes__name Лизинг спецтехники
+                                        .projectPanes__text Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.
+                                        a.projectPanes__detailed(href="#") Подробнее
+                            .projectPanes__item(data-filter="hardware")
+                                .projectPanes__plate
+                                    .projectPanes__img(style="background-image: url(img/project.jpg)")
+                                        //- img(src="img/project.jpg", alt="")
+                                    .projectPanes__descr
+                                        .projectPanes__name Лизинг спецтехники
+                                        .projectPanes__text Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.
+                                        a.projectPanes__detailed(href="#") Подробнее
+                            .projectPanes__item(data-filter="hardware")
+                                .projectPanes__plate
+                                    .projectPanes__img(style="background-image: url(img/project.jpg)")
+                                        //- img(src="img/project.jpg", alt="")
+                                    .projectPanes__descr
+                                        .projectPanes__name Лизинг спецтехники
+                                        .projectPanes__text Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.
+                                        a.projectPanes__detailed(href="#") Подробнее
+                            .projectPanes__item(data-filter="hardware")
+                                .projectPanes__plate
+                                    .projectPanes__img(style="background-image: url(img/project.jpg)")
+                                        //- img(src="img/project.jpg", alt="")
+                                    .projectPanes__descr
+                                        .projectPanes__name Лизинг спецтехники
+                                        .projectPanes__text Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.
+                                        a.projectPanes__detailed(href="#") Подробнее
+                            .projectPanes__item(data-filter="hardware")
+                                .projectPanes__plate
+                                    .projectPanes__img(style="background-image: url(img/project.jpg)")
+                                        //- img(src="img/project.jpg", alt="")
+                                    .projectPanes__descr
+                                        .projectPanes__name Лизинг спецтехники
+                                        .projectPanes__text Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.
+                                        a.projectPanes__detailed(href="#") Подробнее
+
+                        .projectPanes__more
+                            button.btn.btn_outline.js_more(type="button") Показать ещё
+
+        // end project
+
+        // begin partners
+        section#partners.partners
+            .container_center
+                h2.section__title(data-sub="Партнёры") Наши партнёры
+
+                .partners__wrap
+                    .partners__item
+                        a.partners__link(href="#")
+                            img(src="img/partner-1.png", alt="")
+                    .partners__item
+                        a.partners__link(href="#")
+                            img(src="img/partner-2.png", alt="")
+                    .partners__item
+                        a.partners__link(href="#")
+                            img(src="img/partner-3.png", alt="")
+                    .partners__item
+                        a.partners__link(href="#")
+                            img(src="img/partner-4.png", alt="")
+                    .partners__item
+                        a.partners__link(href="#")
+                            img(src="img/partner-5.png", alt="")
+
+        // end partners
+
+        // begin map
+        section#contact.map__wrap
+            .container_center
+                .map__address
+                    h2.section__title Контакты
+                    .map__list
+                        .map__row
+                            .map__label Адрес:
+                            .map__value г. Нижний Новгород, ул. Карла  Маркса, д. 13, оф. 8
+                        .map__row
+                            .map__label Телефон:
+                            .map__value
+                                a(href="tel: "+phone+"")= phone
+                        .map__row
+                            .map__label E-mail:
+                            .map__value 
+                                a(href="mailto: "+email+"")= email
+            .map#map
+
+
+        // end map
 
     footer.footer
-        .container_center
-            p
-            | &copy; 2016 |
-            i.fa.fa-github(aria-hidden='true') &nbsp;
-            a(href='#') View Source
+        .container_center.footer__wrap
+            .footer__left
+                a.logo(href="/")
+                    img(src="img/logo.svg", alt="АЛФАВИТ - Лизинговое агенство")
+                    span.logo__text АЛФАВИТ
+                        small Лизинговое агенство
+
+            .footer__center
+                |2019&copy;
+                a(href="#") Политика конфиденциальности
+
+            .footer__right
+                button.btn.btn_plus(type="button" data-toggle="modal" data-target="#callback") Подать заявку
+
+    //- Button trigger modal callback
+    //- button(class="btn btn-primary btn-lg" data-toggle="modal" data-target="#callback") Click to open modal
+    // Begin Modal callback
+    .modal.fade.callback#callback
+        .modal-dialog
+            .modal-content
+                a(href="#" class="modal-close" data-dismiss="modal")
+                form.form(action="#" method="post")
+                    .modal-header
+                        .modal-title Подать заявку на лизинг
+                    .modal-body
+                        .form__grid
+                            .form__col
+                                .form__row
+                                    select(name="" data-placeholder="Предмет лизинга*" required)
+                                        option(value="")
+                                        option(value="Легковые автомобили") Легковые автомобили
+                                        option(value="Грузовые автомобили") Грузовые автомобили
+                                        option(value="Водный транспорт") Водный транспорт
+                                        option(value="Воздушный транспорт") Воздушный транспорт
+                            .form__col
+                                .form__row
+                                    input(type="text", placeholder="ИНН")
+                            .form__col
+                                .form__row
+                                    input(type="text", placeholder="Стоимость")
+                            .form__col
+                                .form__row
+                                    input(type="text", placeholder="Контактное лицо")
+                            .form__col
+                                .form__row
+                                    input(type="text", placeholder="Колличество")
+                            .form__col
+                                .form__row
+                                    input(type="text", placeholder="Телефон*" required)
+                            .form__col
+                                .form__row
+                                    input(type="text", placeholder="Аванс")
+                            .form__col
+                                .form__row
+                                    input(type="text", placeholder="E-mail")
+                            .form__col
+                                .form__row
+                                    input(type="text", placeholder="Срок лизинга")
+                            .form__col
+                                .form__row
+                                    input(type="text", placeholder="Местонахождение")
+                            .form__col.form__col_full
+                                .form__row
+                                    textarea(placeholder="Дополнительная информация")
+                            .form__col.form__col_full
+                                .form__info Поля, помеченные *, обязательны к заполнения
+                    .modal-footer
+                        .form__grid.form__action
+                            .form__col
+                                .form__row
+                                    button.btn(type="submit") Отправить
+                            .form__col
+                                .form__row
+                                    .form__info Оставляя заявку, вы соглашаетесь  на обработку персональных данных.
+    // End modal callback
+
+    script(src="js/jquery.js")
+    script(src="js/slick.min.js")
+    script(src="js/modal.js")
+    script(src="js/select2.min.js")
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQpIS08g7YPH_GkF3n8oSxL3MVAWMXxh8&language=ru&region=RU&callback=initMap")
+    script(src="js/function.js?"+frontVersion+"")

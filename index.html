@@ -5,35 +5,716 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css?1.2"/>
 </head>
 <body>
   <header class="header">
-    <div class="header__content">
-      <div class="header__left"><a class="logo" href="/"><img src="img/logo.png" alt="alt"/></a></div>
-      <nav class="header__right">
-        <ul class="navbar">
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 0</a></li>
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 1</a></li>
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 2</a></li>
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 3</a></li>
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 4</a></li>
-        </ul>
-      </nav>
+    <div class="container_center">
+      <div class="header__top">
+        <div class="header__left">
+          <div class="navbar__toggle"></div><a class="logo" href="/"><img src="img/logo.svg" alt="АЛФАВИТ - Лизинговое агенство"/><span class="logo__text">АЛФАВИТ<small>Лизинговое агенство</small></span></a>
+          <div class="logo__subtitle">Экономим ваши деньги и время!</div>
+        </div>
+        <div class="header__contact">
+          <div class="header__contactItem"><a class="email" href="mailto: info@sitename.ru">info@sitename.ru</a></div>
+          <div class="header__contactItem"><a class="phone" href="tel: +7 (495) 569 63 63"><b>+7 (495) 569 63 63</b></a></div>
+          <div class="header__contactItem desktop">
+            <button class="btn btn_outline btn_contrast" type="button" data-toggle="modal" data-target="#callback">Заказать звонок</button>
+          </div>
+        </div>
+      </div>
+      <div class="header__bottom">
+        <div class="navbar__toggle"></div>
+        <nav class="header__nav">
+          <ul class="navbar">
+            <li class="navbar__item"><a class="navbar__link" href="#about" data-scroll-to="data-scroll-to">Почему мы</a></li>
+            <li class="navbar__item"><a class="navbar__link" href="#sell" data-scroll-to="data-scroll-to">Акции</a></li>
+            <li class="navbar__item"><a class="navbar__link" href="#profit" data-scroll-to="data-scroll-to">Преимущества</a></li>
+            <li class="navbar__item"><a class="navbar__link" href="#works" data-scroll-to="data-scroll-to">Схема работы </a></li>
+            <li class="navbar__item"><a class="navbar__link" href="#partners" data-scroll-to="data-scroll-to">Партнёры</a></li>
+            <li class="navbar__item"><a class="navbar__link" href="#contact" data-scroll-to="data-scroll-to">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="header__action">
+          <button class="btn btn_plus" type="button" data-toggle="modal" data-target="#callback">Подать заявку</button>
+        </div>
+      </div>
     </div>
   </header>
   <main class="main_content">
-    <div class="container_center">
-      <div class="grid">
-        <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, in.</div>
-        <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo numquam sequi officiis. Quia sed modi voluptatem, aut rem possimus at ipsa nobis iure non corporis nulla suscipit praesentium quos numquam quasi magni delectus eius illo, harum hic id! Laboriosam culpa recusandae nesciunt ab natus molestiae porro reiciendis, eveniet architecto temporibus!</div>
-        <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt fugiat, pariatur, explicabo ut quidem deleniti velit sed error dolor! Voluptates dignissimos consectetur repudiandae ipsam. Iusto, rerum, quam! Corporis, nisi, inventore?</div>
+    <!-- begin home-->
+    <section class="home" id="home">
+      <div class="homePanes">
+        <div class="homePanes__item  active" id="home-0">
+          <div class="homePanes__bg" style="background-color: #0159dd"></div>
+          <div class="homePanes__bgText">Лизинг</div>
+          <div class="homePanes__content container_center">
+            <div class="homePanes__descr">
+              <div class="homePanes__title">Лизинг</div>
+              <div class="homePanes__sub">легковых автомобилей</div>
+              <div class="homePanes__list">
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Стоимость</div>
+                  <div class="homePanes__listValue">от 500 000 руб.</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок</div>
+                  <div class="homePanes__listValue">до 5 лет</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Авансовый платёж</div>
+                  <div class="homePanes__listValue">от 5%</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Удорожание в год</div>
+                  <div class="homePanes__listValue">от 5% годовых</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок рассмотрения</div>
+                  <div class="homePanes__listValue">3 рабочих дня</div>
+                </div>
+              </div>
+            </div>
+            <div class="homePanes__img"><img src="img/home-auto.png" alt=""/></div>
+          </div>
+        </div>
+        <div class="homePanes__item" id="home-1">
+          <div class="homePanes__bg" style="background-color: #323337"></div>
+          <div class="homePanes__bgText">Лизинг</div>
+          <div class="homePanes__content container_center">
+            <div class="homePanes__descr">
+              <div class="homePanes__title">Лизинг</div>
+              <div class="homePanes__sub">Грузового транспорта</div>
+              <div class="homePanes__list">
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Стоимость</div>
+                  <div class="homePanes__listValue">от 500 000 руб.</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок</div>
+                  <div class="homePanes__listValue">до 5 лет</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Авансовый платёж</div>
+                  <div class="homePanes__listValue">от 5%</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Удорожание в год</div>
+                  <div class="homePanes__listValue">от 5% годовых</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок рассмотрения</div>
+                  <div class="homePanes__listValue">3 рабочих дня</div>
+                </div>
+              </div>
+            </div>
+            <div class="homePanes__img"><img src="img/home-cargo.png" alt=""/></div>
+          </div>
+        </div>
+        <div class="homePanes__item" id="home-2">
+          <div class="homePanes__bg" style="background-color: #f8b200"></div>
+          <div class="homePanes__bgText">Лизинг</div>
+          <div class="homePanes__content container_center">
+            <div class="homePanes__descr">
+              <div class="homePanes__title">Лизинг</div>
+              <div class="homePanes__sub">спецтехники</div>
+              <div class="homePanes__list">
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Стоимость</div>
+                  <div class="homePanes__listValue">от 500 000 руб.</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок</div>
+                  <div class="homePanes__listValue">до 5 лет</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Авансовый платёж</div>
+                  <div class="homePanes__listValue">от 5%</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Удорожание в год</div>
+                  <div class="homePanes__listValue">от 5% годовых</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок рассмотрения</div>
+                  <div class="homePanes__listValue">3 рабочих дня</div>
+                </div>
+              </div>
+            </div>
+            <div class="homePanes__img"><img src="img/home-spectech.png" alt=""/></div>
+          </div>
+        </div>
+        <div class="homePanes__item" id="home-3">
+          <div class="homePanes__bg" style="background-color: #b5536a"></div>
+          <div class="homePanes__bgText">Лизинг</div>
+          <div class="homePanes__content container_center">
+            <div class="homePanes__descr">
+              <div class="homePanes__title">Лизинг</div>
+              <div class="homePanes__sub">оборудования</div>
+              <div class="homePanes__list">
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Стоимость</div>
+                  <div class="homePanes__listValue">от 500 000 руб.</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок</div>
+                  <div class="homePanes__listValue">до 5 лет</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Авансовый платёж</div>
+                  <div class="homePanes__listValue">от 20%</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Удорожание в год</div>
+                  <div class="homePanes__listValue">от 7% годовых</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок рассмотрения</div>
+                  <div class="homePanes__listValue">3-5 рабочих дней</div>
+                </div>
+              </div>
+            </div>
+            <div class="homePanes__img"><img src="img/home-factory.png" alt=""/></div>
+          </div>
+        </div>
+        <div class="homePanes__item" id="home-4">
+          <div class="homePanes__bg" style="background-color: #d01103"></div>
+          <div class="homePanes__bgText">Лизинг</div>
+          <div class="homePanes__content container_center">
+            <div class="homePanes__descr">
+              <div class="homePanes__title">Лизинг</div>
+              <div class="homePanes__sub">Воздушного транспорта</div>
+              <div class="homePanes__list">
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Стоимость</div>
+                  <div class="homePanes__listValue">от 5 000 000 руб.</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок</div>
+                  <div class="homePanes__listValue">до 5 лет</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Авансовый платёж</div>
+                  <div class="homePanes__listValue">от 20%</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Удорожание в год</div>
+                  <div class="homePanes__listValue">от 5% годовых</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок рассмотрения</div>
+                  <div class="homePanes__listValue">5-7 рабочих дней</div>
+                </div>
+              </div>
+            </div>
+            <div class="homePanes__img"><img src="img/home-helicopter.png" alt=""/></div>
+          </div>
+        </div>
+        <div class="homePanes__item" id="home-5">
+          <div class="homePanes__bg" style="background-color: #063675"></div>
+          <div class="homePanes__bgText">Лизинг</div>
+          <div class="homePanes__content container_center">
+            <div class="homePanes__descr">
+              <div class="homePanes__title">Лизинг</div>
+              <div class="homePanes__sub">водного транспорта</div>
+              <div class="homePanes__list">
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Стоимость</div>
+                  <div class="homePanes__listValue">от 5 000 000 руб.</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок</div>
+                  <div class="homePanes__listValue">до 5 лет</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Авансовый платёж</div>
+                  <div class="homePanes__listValue">от 20%</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Удорожание в год</div>
+                  <div class="homePanes__listValue">от 5% годовых</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок рассмотрения</div>
+                  <div class="homePanes__listValue">1-2 недели</div>
+                </div>
+              </div>
+            </div>
+            <div class="homePanes__img"><img src="img/home-yacht.png" alt=""/></div>
+          </div>
+        </div>
+        <div class="homePanes__item" id="home-6">
+          <div class="homePanes__bg" style="background-color: #0d1730"></div>
+          <div class="homePanes__bgText">Лизинг</div>
+          <div class="homePanes__content container_center">
+            <div class="homePanes__descr">
+              <div class="homePanes__title">Лизинг</div>
+              <div class="homePanes__sub">Коммерческой недвижимости</div>
+              <div class="homePanes__list">
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Стоимость</div>
+                  <div class="homePanes__listValue">от 5 000 000 руб.</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок</div>
+                  <div class="homePanes__listValue">до 5 лет</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Авансовый платёж</div>
+                  <div class="homePanes__listValue">от 20%</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Удорожание в год</div>
+                  <div class="homePanes__listValue">от 5% годовых</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок рассмотрения</div>
+                  <div class="homePanes__listValue">5-7 рабочих дней</div>
+                </div>
+              </div>
+            </div>
+            <div class="homePanes__img"><img src="img/home-building.png" alt=""/></div>
+          </div>
+        </div>
+        <div class="homePanes__item" id="home-7">
+          <div class="homePanes__bg" style="background-color: #6b5f88"></div>
+          <div class="homePanes__bgText">Лизинг</div>
+          <div class="homePanes__content container_center">
+            <div class="homePanes__descr">
+              <div class="homePanes__title">Возвратный лизинг</div>
+              <div class="homePanes__sub"></div>
+              <div class="homePanes__list">
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Стоимость</div>
+                  <div class="homePanes__listValue">от 1 000 000 руб.</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок</div>
+                  <div class="homePanes__listValue">до 5 лет</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Авансовый платёж</div>
+                  <div class="homePanes__listValue">от 0%</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Удорожание в год</div>
+                  <div class="homePanes__listValue">от 5% годовых</div>
+                </div>
+                <div class="homePanes__listRow">
+                  <div class="homePanes__listLabel">Срок рассмотрения</div>
+                  <div class="homePanes__listValue">3-5 рабочих дней</div>
+                </div>
+              </div>
+            </div>
+            <div class="homePanes__img"><img src="img/home-money.png" alt=""/></div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="container_center">
+        <div class="homeTabs">
+          <div class="homeTabs__item  active" data-swich="#home-0">
+            <div class="homeTabs__img"><i class="icon_tab-car"></i></div>
+            <div class="homeTabs__name">Легковые автомобили</div>
+          </div>
+          <div class="homeTabs__item" data-swich="#home-1">
+            <div class="homeTabs__img"><i class="icon_tab-cargo"></i></div>
+            <div class="homeTabs__name">Грузовые автомобили</div>
+          </div>
+          <div class="homeTabs__item" data-swich="#home-2">
+            <div class="homeTabs__img"><i class="icon_tab-spectech"></i></div>
+            <div class="homeTabs__name">Спецтехника</div>
+          </div>
+          <div class="homeTabs__item" data-swich="#home-3">
+            <div class="homeTabs__img"><i class="icon_tab-manufacture"></i></div>
+            <div class="homeTabs__name">Оборудование</div>
+          </div>
+          <div class="homeTabs__item" data-swich="#home-4">
+            <div class="homeTabs__img"><i class="icon_tab-helicopter"></i></div>
+            <div class="homeTabs__name">Воздушный транспорт</div>
+          </div>
+          <div class="homeTabs__item" data-swich="#home-5">
+            <div class="homeTabs__img"><i class="icon_tab-water"></i></div>
+            <div class="homeTabs__name">Водный транспорт</div>
+          </div>
+          <div class="homeTabs__item" data-swich="#home-6">
+            <div class="homeTabs__img"><i class="icon_tab-build"></i></div>
+            <div class="homeTabs__name">Недвижимость</div>
+          </div>
+          <div class="homeTabs__item" data-swich="#home-7">
+            <div class="homeTabs__img"><i class="icon_tab-money"></i></div>
+            <div class="homeTabs__name">Возвратный лизинг</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end home-->
+    <!-- begin about-->
+    <section class="about section" id="about">
+      <div class="container_center">
+        <h2 class="section__title" data-sub="Почему мы">Почему мы</h2>
+        <div class="about__content">
+          <div class="about__img"><img src="img/about.png" alt=""/></div>
+          <div class="about__text">
+            <p><b>АЛФАВИТ </b>– лизинговое агентство, это онлайн сервис для подачи заявки на лизинг и получения оптимально выгодного предложения. АЛФАВИТ, потому, что от А до Я, наша платформа объединяет все лизинговые компании России, позволяет нам работать со всеми категориями клиентов и видами предметов лизинга. Партнерская сеть объединяет более 50 лизинговых компаний федерального и региональных масштабов.</p>
+            <p><b>Самый выгодный расчет на лизинг. </b>Благодаря постоянному и углубленному исследованию рынка лизинга, мы знаем, где предложат лучшие финансовые условия для конкретного клиента, с учетом его потребностей и специфики бизнеса. На основании понимания рынка и опыта работы в лизинге с 2006 года, помогаем нашим клиентам найти наиболее выгодные, а иногда и эксклюзивные условия сотрудничества, при этом отстаивая интересы лизингополучателя.</p>
+            <p><b>Быстрое решение. </b>После 10-ти минутного разговора с нашим специалистом, вы сможете получить ответ о возможностях по финансированию вашего проекта. В течение 1-2 рабочих дней отправим вам 2-3 самых лучших предложения по лизингу, выбирать из лучшего будете сами. Сделка от обращения до получения предмета лизинга во владение, при условии наличия имущества у поставщика осуществляется в среднем от 1 до 2 рабочих недель.</p>
+            <p><b>Консалтинг. </b>Итак, мы экономим ваше время и деньги, мы подберем для вас лучшие условия на рынке, поможем согласовать договоры, сопроводим сделку до передачи предмета лизинга вам в пользование. Также с радостью готовы вас консультировать в течения действия всего срока договора лизинга.</p>
+          </div>
+        </div>
+        <div class="about__descr">Если у вас уже есть предложение от лизинговой компании, мы готовы проконсультировать вас по данному предложению, рассказать о возможных подводных камнях, а также готовы найти более выгодные условия в других лизинговых компаниях – партнерах.</div>
+      </div>
+    </section>
+    <!-- end about-->
+    <!-- begin sell-->
+    <section class="sell section" id="sell">
+      <div class="container_center">
+        <h2 class="section__title" data-sub="Акции">Акции, выгодные предложения</h2>
+        <div class="sell__list">
+          <div class="sell__item">
+            <div class="sell__img"><img src="img/sell-1.jpg" alt=""/></div>
+            <div class="sell__descr">
+              <div class="sell__name">Вода зовёт!</div>
+              <div class="sell__date">с 1 августа до 31 сентября</div>
+              <div class="sell__text">Водный транспорт в лизинг на выгодных условиях. Найдёте выгоднее? Вернём разницу</div>
+              <div class="sell__action">
+                <button class="btn btn_plus" type="button">Подать заявку</button>
+              </div>
+            </div>
+          </div>
+          <div class="sell__item">
+            <div class="sell__img"><img src="img/sell-2.jpg" alt=""/></div>
+            <div class="sell__descr">
+              <div class="sell__name">Спецтехника по спеццене</div>
+              <div class="sell__date">с 1 августа до 31 сентября</div>
+              <div class="sell__text">Водный транспорт в лизинг на выгодных условиях. Найдёте выгоднее? Вернём разницу</div>
+              <div class="sell__action">
+                <button class="btn btn_plus" type="button">Подать заявку</button>
+              </div>
+            </div>
+          </div>
+          <div class="sell__item">
+            <div class="sell__img"><img src="img/sell-3.jpg" alt=""/></div>
+            <div class="sell__descr">
+              <div class="sell__name">Вертолёт в каждую семью!</div>
+              <div class="sell__date">с 1 августа до 31 сентября</div>
+              <div class="sell__text">Водный транспорт в лизинг на выгодных условиях. Найдёте выгоднее? Вернём разницу</div>
+              <div class="sell__action">
+                <button class="btn btn_plus" type="button">Подать заявку</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end sell-->
+    <!-- begin profit-->
+    <section class="profit section" id="profit">
+      <div class="container_center">
+        <div class="profit__content">
+          <div class="profit__text">
+            <h2 class="section__title" data-sub="Преимущества">Наши преимущества — ваши выгоды!</h2>
+            <div class="profit__img"><img src="img/profit.jpg" alt=""/></div>
+            <div class="profit__list">
+              <p><b>Вся Россия. </b>Работаем по всей территории РФ, включая Крым и Кавказ.</p>
+              <p><b>Скидки на авто и технику от дилеров и производителей, </b>т.к. косвенно мы являемся оптовыми покупателями.</p>
+              <p><b>Консалтинг. </b>Качественная консультационная поддержка на любом этапе обращения.</p>
+              <p><b>Быстро. </b>Зная рынок, мы за 1-2 дня сделаем за вас работу, на которую вы потратите 2-3 недели, выберем лучшие условия от 50 лизинговых компаний партнеров, и вы не ощутите их назойливость.</p>
+              <p><b>Дешево. </b>Если у вас уже есть предложение от лизинговой компании, то мы готовы найти для вас условия лучше!</p>
+              <p><b>Бесплатно для вас. </b>Наша услуга бесплатна для лизингополучателя, так как, материальное вознаграждение мы получаем от лизинговых компаний, которым даем возможность заключить новые сделки и берем на себя часть их издержек связанных с привлечением новых клиентов.</p>
+            </div>
+            <div class="profit__sub">Если у вас уже есть предложение от лизинговой компании, то мы готовы найти для вас лучше!</div>
+            <div class="profit__action">
+              <button class="btn btn_outline" type="button">Подробнее о сотрудничестве</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end profit-->
+    <!-- begin works-->
+    <section class="works section" id="works">
+      <div class="container_center">
+        <h2 class="section__title" data-sub="Схема работы">Схема работы</h2>
+        <div class="section__sub">С нами максимально удобно! Сделайте всего 4 шага</div>
+        <div class="works__list">
+          <div class="works__item">
+            <div class="icon_next"></div>
+            <div class="works__icon"><i class="icon_comment"></i></div>
+            <div class="works__text">01. Подаёте <a href="#">заявку </a>на лизинг и вам перезванивает персональный менеджер.</div>
+          </div>
+          <div class="works__item">
+            <div class="icon_next"></div>
+            <div class="works__icon"><i class="icon_sell"></i></div>
+            <div class="works__text">02. Находим самые выгодные предложения, а вы выбираете лучшее! </div>
+          </div>
+          <div class="works__item">
+            <div class="icon_next"></div>
+            <div class="works__icon"><i class="icon_list"></i></div>
+            <div class="works__text">03. Подписываете договор, платите аванс.</div>
+          </div>
+          <div class="works__item">
+            <div class="works__icon"><i class="icon_cargo"></i></div>
+            <div class="works__text">04. Получаете предмет лизинга.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end works-->
+    <!-- begin project-->
+    <section class="project" id="project">
+      <div class="container_center">
+        <h2 class="section__title" data-sub="Проекты">Реализованные проекты</h2>
+        <div class="projectTabs">
+          <div class="projectTabs__item active" data-tab="all">Все</div>
+          <div class="projectTabs__item" data-tab="car">Легковые</div>
+          <div class="projectTabs__item" data-tab="cargo">Грузовые</div>
+          <div class="projectTabs__item" data-tab="spec">Спецтехника</div>
+          <div class="projectTabs__item" data-tab="hardware">Оборудование</div>
+          <div class="projectTabs__item" data-tab="air">Воздушный транспорт</div>
+          <div class="projectTabs__item" data-tab="water">Водный транспорт</div>
+          <div class="projectTabs__item" data-tab="house">Недвижимость</div>
+          <div class="projectTabs__item" data-tab="back">Возвратный</div>
+        </div>
+        <div class="projectPanes">
+          <div class="projectPanes__panel active" id="proj-1">
+            <div class="projectPanes__list">
+              <div class="projectPanes__item" data-filter="car">
+                <div class="projectPanes__plate">
+                  <div class="projectPanes__img" style="background-image: url(img/project.jpg)"></div>
+                  <div class="projectPanes__descr">
+                    <div class="projectPanes__name">Лизинг спецтехники</div>
+                    <div class="projectPanes__text">Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.</div><a class="projectPanes__detailed" href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="projectPanes__item" data-filter="cargo">
+                <div class="projectPanes__plate">
+                  <div class="projectPanes__img" style="background-image: url(img/project.jpg)"></div>
+                  <div class="projectPanes__descr">
+                    <div class="projectPanes__name">Лизинг спецтехники</div>
+                    <div class="projectPanes__text">Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.</div><a class="projectPanes__detailed" href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="projectPanes__item" data-filter="spec">
+                <div class="projectPanes__plate">
+                  <div class="projectPanes__img" style="background-image: url(img/project.jpg)"></div>
+                  <div class="projectPanes__descr">
+                    <div class="projectPanes__name">Лизинг спецтехники</div>
+                    <div class="projectPanes__text">Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.</div><a class="projectPanes__detailed" href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="projectPanes__item" data-filter="spec">
+                <div class="projectPanes__plate">
+                  <div class="projectPanes__img" style="background-image: url(img/project.jpg)"></div>
+                  <div class="projectPanes__descr">
+                    <div class="projectPanes__name">Лизинг спецтехники</div>
+                    <div class="projectPanes__text">Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.</div><a class="projectPanes__detailed" href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="projectPanes__item" data-filter="hardware">
+                <div class="projectPanes__plate">
+                  <div class="projectPanes__img" style="background-image: url(img/project.jpg)"></div>
+                  <div class="projectPanes__descr">
+                    <div class="projectPanes__name">Лизинг спецтехники</div>
+                    <div class="projectPanes__text">Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.</div><a class="projectPanes__detailed" href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="projectPanes__item" data-filter="hardware">
+                <div class="projectPanes__plate">
+                  <div class="projectPanes__img" style="background-image: url(img/project.jpg)"></div>
+                  <div class="projectPanes__descr">
+                    <div class="projectPanes__name">Лизинг спецтехники</div>
+                    <div class="projectPanes__text">Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.</div><a class="projectPanes__detailed" href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="projectPanes__item" data-filter="hardware">
+                <div class="projectPanes__plate">
+                  <div class="projectPanes__img" style="background-image: url(img/project.jpg)"></div>
+                  <div class="projectPanes__descr">
+                    <div class="projectPanes__name">Лизинг спецтехники</div>
+                    <div class="projectPanes__text">Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.</div><a class="projectPanes__detailed" href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="projectPanes__item" data-filter="hardware">
+                <div class="projectPanes__plate">
+                  <div class="projectPanes__img" style="background-image: url(img/project.jpg)"></div>
+                  <div class="projectPanes__descr">
+                    <div class="projectPanes__name">Лизинг спецтехники</div>
+                    <div class="projectPanes__text">Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.</div><a class="projectPanes__detailed" href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="projectPanes__item" data-filter="hardware">
+                <div class="projectPanes__plate">
+                  <div class="projectPanes__img" style="background-image: url(img/project.jpg)"></div>
+                  <div class="projectPanes__descr">
+                    <div class="projectPanes__name">Лизинг спецтехники</div>
+                    <div class="projectPanes__text">Крупному складскому оператору федерального масштаба, передано  в лизинг 10 складских дизельных погрузчиков MITSUBISHI FD20CNT  на общую сумму 20 млн. рублей.</div><a class="projectPanes__detailed" href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="projectPanes__more">
+              <button class="btn btn_outline js_more" type="button">Показать ещё</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end project-->
+    <!-- begin partners-->
+    <section class="partners" id="partners">
+      <div class="container_center">
+        <h2 class="section__title" data-sub="Партнёры">Наши партнёры</h2>
+        <div class="partners__wrap">
+          <div class="partners__item"><a class="partners__link" href="#"><img src="img/partner-1.png" alt=""/></a></div>
+          <div class="partners__item"><a class="partners__link" href="#"><img src="img/partner-2.png" alt=""/></a></div>
+          <div class="partners__item"><a class="partners__link" href="#"><img src="img/partner-3.png" alt=""/></a></div>
+          <div class="partners__item"><a class="partners__link" href="#"><img src="img/partner-4.png" alt=""/></a></div>
+          <div class="partners__item"><a class="partners__link" href="#"><img src="img/partner-5.png" alt=""/></a></div>
+        </div>
+      </div>
+    </section>
+    <!-- end partners-->
+    <!-- begin map-->
+    <section class="map__wrap" id="contact">
+      <div class="container_center">
+        <div class="map__address">
+          <h2 class="section__title">Контакты</h2>
+          <div class="map__list">
+            <div class="map__row">
+              <div class="map__label">Адрес:</div>
+              <div class="map__value">г. Нижний Новгород, ул. Карла  Маркса, д. 13, оф. 8</div>
+            </div>
+            <div class="map__row">
+              <div class="map__label">Телефон:</div>
+              <div class="map__value"><a href="tel: +7 (495) 569 63 63">+7 (495) 569 63 63</a></div>
+            </div>
+            <div class="map__row">
+              <div class="map__label">E-mail:</div>
+              <div class="map__value"> <a href="mailto: info@sitename.ru">info@sitename.ru</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map" id="map"></div>
+    </section>
+    <!-- end map-->
   </main>
   <footer class="footer">
-    <div class="container_center">
-      <p></p>&copy; 2016 |<i class="fa fa-github" aria-hidden="true">&nbsp;</i><a href="#">View Source</a>
+    <div class="container_center footer__wrap">
+      <div class="footer__left"><a class="logo" href="/"><img src="img/logo.svg" alt="АЛФАВИТ - Лизинговое агенство"/><span class="logo__text">АЛФАВИТ<small>Лизинговое агенство</small></span></a></div>
+      <div class="footer__center">2019&copy;<a href="#">Политика конфиденциальности</a></div>
+      <div class="footer__right">
+        <button class="btn btn_plus" type="button" data-toggle="modal" data-target="#callback">Подать заявку</button>
+      </div>
     </div>
   </footer>
+  <!-- Begin Modal callback-->
+  <div class="modal fade callback" id="callback">
+    <div class="modal-dialog">
+      <div class="modal-content"><a class="modal-close" href="#" data-dismiss="modal"></a>
+        <form class="form" action="#" method="post">
+          <div class="modal-header">
+            <div class="modal-title">Подать заявку на лизинг</div>
+          </div>
+          <div class="modal-body">
+            <div class="form__grid">
+              <div class="form__col">
+                <div class="form__row">
+                  <select name="" data-placeholder="Предмет лизинга*" required="required">
+                    <option value=""></option>
+                    <option value="Легковые автомобили">Легковые автомобили</option>
+                    <option value="Грузовые автомобили">Грузовые автомобили</option>
+                    <option value="Водный транспорт">Водный транспорт</option>
+                    <option value="Воздушный транспорт">Воздушный транспорт</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <input type="text" placeholder="ИНН"/>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <input type="text" placeholder="Стоимость"/>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <input type="text" placeholder="Контактное лицо"/>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <input type="text" placeholder="Колличество"/>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <input type="text" placeholder="Телефон*" required="required"/>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <input type="text" placeholder="Аванс"/>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <input type="text" placeholder="E-mail"/>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <input type="text" placeholder="Срок лизинга"/>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <input type="text" placeholder="Местонахождение"/>
+                </div>
+              </div>
+              <div class="form__col form__col_full">
+                <div class="form__row">
+                  <textarea placeholder="Дополнительная информация"></textarea>
+                </div>
+              </div>
+              <div class="form__col form__col_full">
+                <div class="form__info">Поля, помеченные *, обязательны к заполнения</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form__grid form__action">
+              <div class="form__col">
+                <div class="form__row">
+                  <button class="btn" type="submit">Отправить</button>
+                </div>
+              </div>
+              <div class="form__col">
+                <div class="form__row">
+                  <div class="form__info">Оставляя заявку, вы соглашаетесь  на обработку персональных данных.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End modal callback-->
+  <script src="js/jquery.js"></script>
+  <script src="js/slick.min.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/select2.min.js"></script>
+  <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQpIS08g7YPH_GkF3n8oSxL3MVAWMXxh8&amp;language=ru&amp;region=RU&amp;callback=initMap"></script>
+  <script src="js/function.js?1.2"></script>
 </body>

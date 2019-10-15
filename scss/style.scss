@@ -5,20 +5,189 @@
  * Skype: ivanov_ea
  *
  */
-@import 'mixins/mixin'; // Fonts
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,900); // Mixin for include fonts
-@include font-face("ArialMT", 'fonts/CenturyGothic', normal, normal);
+
+@import 'mixins/mixin';
+@mixin linkHover {
+    display: inline-block;
+
+    &:after {
+        content: '';
+        display: block;
+        transition: 0.3s;
+        margin-left: 50%;
+        width: 0;
+        border-top: 1px solid;
+    }
+
+    &:hover {
+        &:after {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+
+}
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap&subset=cyrillic');
+// @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,900); // Mixin for include fonts
+// @include font-face("ArialMT", 'fonts/CenturyGothic', normal, normal);
 // Import files
 @import 'variables/variables';
 @import 'core/reset';
 @import 'core/template';
+
+@import 'vendor/slick';
+@import 'vendor/modal';
+
+@import 'core/animation';
+@import 'core/visible';
+@import 'core/icon';
 @import 'core/header';
 @import 'core/navbar';
 @import 'core/footer';
 @import 'core/form';
-@import 'core/grid';
-@import 'core/soc';
-@import 'core/breadcrumb';
-@import 'core/pagination';
 @import 'core/buttons';
 @import 'core/video';
+@import 'core/logo';
+@import 'core/homeTabs';
+@import 'core/homePanes';
+@import 'core/about';
+@import 'core/section';
+@import 'core/sell';
+@import 'core/profit';
+@import 'core/works';
+@import 'core/project';
+@import 'core/partners';
+@import 'core/map';
+
+b {
+    font-weight: 600;
+}
+
+p {
+    line-height: 1.55;
+    margin: 1.5em 0;
+    font-size: 14px;
+
+    @media (min-width: 992px) {
+        font-size: 15px;
+    }
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+
+}
+
+.select2 {
+    &-hidden-accessible {
+        display: none;
+    }
+
+    &-search__field {
+        display: none;
+    }
+
+    &-container {
+        span {
+            display: block;
+        }
+
+        .form__row & {
+            width: 100% !important;
+            // display: block;
+        }
+
+        &--open {
+            z-index: 1050;
+        }
+
+        &--default {
+            .select2 {
+                &-results {
+                    &__options {
+                        list-style: none;
+                        padding: 8px 0;
+                        margin: 0;
+                    }
+
+                    &__option {
+                        padding: 10px 25px;
+                        cursor: pointer;
+
+                        &--highlighted[aria-selected] {
+                            background-color: rgba(#000, .1);
+                        }
+                    }
+                }
+
+                &-dropdown {
+                    position: absolute;
+                    // z-index: 150;
+                    background-color: #fff;
+                    border-radius: 6px;
+                    margin-top: 3px;
+                    box-shadow: 0 1px 10px rgba(#000, .1);
+
+                    &--below {}
+
+                    &--above {}
+                }
+
+                &-selection {
+                    position: relative;
+                    background: #F5F5F5;
+                    border: 1px solid #F5F5F5;
+                    padding: 15px 38px 15px 28px;
+                    outline: none;
+                    font-size: 14px;
+                    font-weight: 300;
+                    font-family: $main_font_family;
+                    border-radius: 6px;
+                    transition: all 0.3s;
+
+                    &:hover {
+                        border: 1px solid lighten(#F5F5F5, 2%);
+                        background-color: lighten(#F5F5F5, 2%);
+                    }
+
+                    &:focus {
+                        border: 1px solid #F5F5F5;
+                        background-color: lighten(#F5F5F5, 7%);
+                    }
+
+                    &--single {
+                        .select2 {
+                            &-selection {
+                                &__rendered {}
+
+                                &__placeholder {}
+
+                                &__arrow {
+                                    position: absolute;
+                                    right: 0;
+                                    top: 0;
+                                    bottom: 0;
+                                    width: 38px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+
+                                    b {
+                                        &:before {
+                                            font-family: 'alphabet';
+                                            content: "\e904";
+                                            color: #323F53;
+                                            font-size: 7px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
