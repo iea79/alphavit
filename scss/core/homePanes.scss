@@ -20,7 +20,7 @@
         // min-height: 789px;
         position: relative;
         color: $color_withe;
-        background: url("../img/elipse-plus.svg") right top no-repeat / auto 100%;
+        background: url("../img/elipse-plus.png") right 0 top no-repeat / auto 120%;
         transition: 0.3s;
         opacity: 0;
 
@@ -52,9 +52,7 @@
         }
 
         &:after {
-            z-index: -1;
-            right: 50%;
-            margin-right: -($container_width/2 - 189px);
+            display: none;
         }
 
         &.active {

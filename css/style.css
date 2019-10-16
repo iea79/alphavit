@@ -1761,7 +1761,7 @@ input[type=checkbox]:disabled:checked:before, input[type=checkbox]:disabled:inde
     padding-top: 117px;
     position: relative;
     color: #ffffff;
-    background: url("../img/elipse-plus.svg") right top no-repeat/auto 100%;
+    background: url("../img/elipse-plus.png") right 0 top no-repeat/auto 120%;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
@@ -1786,9 +1786,7 @@ input[type=checkbox]:disabled:checked:before, input[type=checkbox]:disabled:inde
       left: 50%;
       margin-left: -699px; }
     .homePanes__item:after {
-      z-index: -1;
-      right: 50%;
-      margin-right: -525px; }
+      display: none; }
     .homePanes__item.active {
       display: block;
       opacity: 1; }
