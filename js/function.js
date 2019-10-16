@@ -97,7 +97,7 @@ function checkOnResize() {
 function swichHomeTabs() {
     $('[data-swich]').on('click', function() {
         console.log($(this).data('swich'));
-        let id = $(this).data('swich');
+        var id = $(this).data('swich');
         $('[data-swich].active').removeClass('active');
         $(this).addClass('active');
 
@@ -110,7 +110,7 @@ swichHomeTabs();
 
 function openMobileNav() {
     $('.navbar__toggle').on('click', function() {
-        let wrapp = $('.header__bottom');
+        var wrapp = $('.header__bottom');
 
         wrapp.toggleClass('open');
     });
@@ -119,14 +119,14 @@ openMobileNav();
 
 // Stiky menu // Липкое меню. При прокрутке к элементу #header добавляется класс .stiky который и стилизуем
 function stikyMenu() {
-    let wrapp;
+    var wrapp;
     if (isXsWidth()) {
         wrapp = $('.header');
     } else {
         wrapp = $('.header__bottom');
     };
-    let HeaderTop = wrapp.offset().top + $('.home').innerHeight();
-    let currentTop = $(window).scrollTop();
+    var HeaderTop = wrapp.offset().top + $('.home').innerHeight();
+    var currentTop = $(window).scrollTop();
 
     setNavbarPosition();
 
@@ -144,10 +144,10 @@ function stikyMenu() {
         }
 
         $('.navbar__link').each(function(index, el) {
-            let section = $(this).attr('href');
+            var section = $(this).attr('href');
 
             if ($('section').is(section)) {
-                let offset = $(section).offset().top;
+                var offset = $(section).offset().top;
 
                 if (offset <= currentTop && offset + $(section).innerHeight() > currentTop) {
                     $(this).addClass('active');
@@ -161,7 +161,7 @@ function stikyMenu() {
 // stikyMenu();
 
 function swichTabs() {
-	let tab = $('[data-tab]'),
+	var tab = $('[data-tab]'),
 		pane = $('[data-pane]'),
         more = $('.js_more'),
         item;
@@ -170,7 +170,7 @@ function swichTabs() {
 		// e.preventDefault();
 
 		// $(this).attr('data-tab') // data-tab
-		let id = $(this).data('tab') // data-tab
+		var id = $(this).data('tab') // data-tab
 
 		tab.removeClass('active');
 		$(this).addClass('active');
@@ -211,7 +211,7 @@ function swichTabs() {
 	});
 
     more.on('click', function() {
-        let current = $('[data-tab].active').data('tab');
+        var current = $('[data-tab].active').data('tab');
         // console.log(current);
         if (current == 'all') {
             $('[data-filter]').removeClass('hidden');
@@ -487,14 +487,14 @@ function uploadYoutubeVideo() {
 
         $('.video__play, .video__prev').on('click', function () {
             // создаем iframe со включенной опцией autoplay
-            let wrapp = $(this).closest('.js_youtube'),
+            var wrapp = $(this).closest('.js_youtube'),
                 videoId = wrapp.attr('id'),
                 iframe_url = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&autohide=1";
 
             if ($(this).data('params')) iframe_url += '&' + $(this).data('params');
 
             // Высота и ширина iframe должны быть такими же, как и у родительского блока
-            let iframe = $('<iframe/>', {
+            var iframe = $('<iframe/>', {
                 'frameborder': '0',
                 'src': iframe_url,
             })
