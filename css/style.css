@@ -1596,7 +1596,7 @@ input[type=checkbox]:disabled:checked:before, input[type=checkbox]:disabled:inde
 
 .homeTabs {
   position: relative;
-  margin: -6% -15px 0;
+  margin: -6% -13px 0;
   z-index: 10;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1998,7 +1998,7 @@ input[type=checkbox]:disabled:checked:before, input[type=checkbox]:disabled:inde
         margin-left: -385px; } }
     @media (max-width: 767px) {
       .homePanes__item:nth-child(6) .homePanes__img img {
-        max-width: 160%;
+        max-width: 150%;
         margin-left: 50%;
         -webkit-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
