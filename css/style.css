@@ -1996,6 +1996,13 @@ input[type=checkbox]:disabled:checked:before, input[type=checkbox]:disabled:inde
       .homePanes__item:nth-child(6) .homePanes__img img {
         margin-top: 31px;
         margin-left: -385px; } }
+    @media (max-width: 767px) {
+      .homePanes__item:nth-child(6) .homePanes__img img {
+        max-width: 160%;
+        margin-left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%); } }
     .homePanes__item:nth-child(6) .homePanes__img:before {
       background: -webkit-radial-gradient(50% 50%, 50% 50%, #4787DC 0%, #063675 100%);
       background: -o-radial-gradient(50% 50%, 50% 50%, #4787DC 0%, #063675 100%);

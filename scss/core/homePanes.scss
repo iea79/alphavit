@@ -358,6 +358,14 @@
                 }
             }
 
+            @media (max-width: 767px) {
+                img {
+                    max-width: 160%;
+                    margin-left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+
             &:before {
                 background: radial-gradient(50% 50% at 50% 50%, #4787DC 0%, #063675 100%);
             }
