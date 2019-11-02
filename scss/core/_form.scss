@@ -67,6 +67,15 @@
 		align-items: center;
 		font-size: 15px;
 	}
+
+	&__rezult {
+		&:not(:empty) {
+			color: $color_primary;
+			text-align: center;
+			margin-top: 20px;
+			font-weight: 600;
+		}
+	}
 }
 // Input text and textarea ================================================
 input:not([type]),

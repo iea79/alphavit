@@ -387,51 +387,57 @@ body
         .modal-dialog
             .modal-content
                 a(href="#" class="modal-close" data-dismiss="modal")
-                form.form(action="#" method="post")
+                form.form(action="send.php" method="post")
                     .modal-header
                         .modal-title Подать заявку на лизинг
                     .modal-body
                         .form__grid
                             .form__col
                                 .form__row
-                                    select(name="" data-placeholder="Предмет лизинга*" required)
+                                    select(name="type" data-placeholder="Предмет лизинга*" required)
                                         option(value="")
                                         option(value="Легковые автомобили") Легковые автомобили
                                         option(value="Грузовые автомобили") Грузовые автомобили
-                                        option(value="Водный транспорт") Водный транспорт
+                                        option(value="Спецтехника") Спецтехника
+                                        option(value="Оборудование") Оборудование
                                         option(value="Воздушный транспорт") Воздушный транспорт
+                                        option(value="Водный транспорт") Водный транспорт
+                                        option(value="Недвижимость") Недвижимость
+                                        option(value="Возвратный лизинг") Возвратный лизинг
                             .form__col
                                 .form__row
-                                    input(type="text", placeholder="ИНН")
+                                    input(type="text", name="inn" placeholder="ИНН")
                             .form__col
                                 .form__row
-                                    input(type="text", placeholder="Стоимость")
+                                    input(type="text", name="price" placeholder="Стоимость")
                             .form__col
                                 .form__row
-                                    input(type="text", placeholder="Контактное лицо")
+                                    input(type="text", name="name" placeholder="Контактное лицо")
                             .form__col
                                 .form__row
-                                    input(type="text", placeholder="Колличество")
+                                    input(type="text", name="count" placeholder="Колличество")
                             .form__col
                                 .form__row
-                                    input(type="text", placeholder="Телефон*" required)
+                                    input(type="tel", name="tel" placeholder="Телефон*" required)
                             .form__col
                                 .form__row
-                                    input(type="text", placeholder="Аванс")
+                                    input(type="text", name="avans" placeholder="Аванс")
                             .form__col
                                 .form__row
-                                    input(type="text", placeholder="E-mail")
+                                    input(type="text", name="email" placeholder="E-mail")
                             .form__col
                                 .form__row
-                                    input(type="text", placeholder="Срок лизинга")
+                                    input(type="text", name="date" placeholder="Срок лизинга")
                             .form__col
                                 .form__row
-                                    input(type="text", placeholder="Местонахождение")
+                                    input(type="text", name="place" placeholder="Местонахождение")
                             .form__col.form__col_full
                                 .form__row
-                                    textarea(placeholder="Дополнительная информация")
+                                    textarea(name="info" placeholder="Дополнительная информация")
                             .form__col.form__col_full
                                 .form__info Поля, помеченные *, обязательны к заполнения
+
+                    .form__rezult
                     .modal-footer
                         .form__grid.form__action
                             .form__col
@@ -446,5 +452,7 @@ body
     script(src="js/slick.min.js")
     script(src="js/modal.js")
     script(src="js/select2.min.js")
+    script(src="js/jquery.touchSwipe.min.js")
+
     script(src="js/function.min.js?"+frontVersion+"")
     script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQpIS08g7YPH_GkF3n8oSxL3MVAWMXxh8&language=ru&region=RU&callback=initMap")

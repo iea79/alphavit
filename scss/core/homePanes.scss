@@ -20,9 +20,12 @@
         // min-height: 789px;
         position: relative;
         color: $color_withe;
-        background: url("../img/elipse-plus.png") right 0 top no-repeat / auto 120%;
         transition: 0.3s;
         opacity: 0;
+
+        @media (min-width: 768px) {
+            // background: url("../img/elipse-plus.png") right 0 top no-repeat / auto 120%;
+        }
 
         @media (min-width: 768px) {
             padding-top: 173px;
@@ -39,7 +42,7 @@
 
         &:after,
         &:before {
-            content: '';
+            // content: '';
             position: absolute;
             top: 0;
             bottom: 0;

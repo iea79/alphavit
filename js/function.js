@@ -233,7 +233,7 @@ function swichTabs() {
                 // more.show();
             }
         });
-        console.log(item.length);
+        // console.log(item.length);
         showMoreBtn(item.length);
     }
     showAllItem();
@@ -252,7 +252,7 @@ function swichTabs() {
                 // more.show();
             }
         });
-        console.log(item.length);
+        // console.log(item.length);
         showMoreBtn(item.length);
     }
 
@@ -263,6 +263,30 @@ function swichTabs() {
             more.show();
         }
     }
+
+    $('.homePanes__item').swipe({
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+            // console.log(direction);
+            var count = $('.homePanes__item').length;
+            switch (direction) {
+                case 'left':
+                    if ($(this).index() === (count-1)) return false;
+                    $('.homePanes__item').removeClass('active');
+                    $('.homeTabs__item').removeClass('active');
+                    $(this).next().addClass('active');
+                    $('[data-swich="#'+$(this).attr("id")+'"]').next().addClass('active');
+                    break;
+                case 'right':
+                    if ($(this).index() === 0) return false;
+                    $('.homePanes__item').removeClass('active');
+                    $('.homeTabs__item').removeClass('active');
+                    $(this).prev().addClass('active');
+                    $('[data-swich="#'+$(this).attr("id")+'"]').prev().addClass('active');
+                    break;
+                default:
+            }
+        }
+    });
 
 };
 swichTabs();
@@ -546,6 +570,7 @@ function formSubmit() {
                     // console.log(response);
                     // // console.log(data);
                     // // document.location.href = "success.html";
+                    $('.form__rezult').html('Ваше сообщение отправлено! <br>В ближайшее время наш специалист свяжется свами.');
                 },
                 error: function (response) {
                     // $('#success').modal('show');
@@ -557,7 +582,7 @@ function formSubmit() {
 
     });
 
-    $('[required]').on('blur', function() {
+    $('[required]').on('blur change', function() {
         if ($(this).val() != '') {
             $(this).removeClass('invalid');
         }

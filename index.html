@@ -620,7 +620,7 @@
   <div class="modal fade callback" id="callback">
     <div class="modal-dialog">
       <div class="modal-content"><a class="modal-close" href="#" data-dismiss="modal"></a>
-        <form class="form" action="#" method="post">
+        <form class="form" action="send.php" method="post">
           <div class="modal-header">
             <div class="modal-title">Подать заявку на лизинг</div>
           </div>
@@ -628,63 +628,67 @@
             <div class="form__grid">
               <div class="form__col">
                 <div class="form__row">
-                  <select name="" data-placeholder="Предмет лизинга*" required="required">
+                  <select name="type" data-placeholder="Предмет лизинга*" required="required">
                     <option value=""></option>
                     <option value="Легковые автомобили">Легковые автомобили</option>
                     <option value="Грузовые автомобили">Грузовые автомобили</option>
-                    <option value="Водный транспорт">Водный транспорт</option>
+                    <option value="Спецтехника">Спецтехника</option>
+                    <option value="Оборудование">Оборудование</option>
                     <option value="Воздушный транспорт">Воздушный транспорт</option>
+                    <option value="Водный транспорт">Водный транспорт</option>
+                    <option value="Недвижимость">Недвижимость</option>
+                    <option value="Возвратный лизинг">Возвратный лизинг</option>
                   </select>
                 </div>
               </div>
               <div class="form__col">
                 <div class="form__row">
-                  <input type="text" placeholder="ИНН"/>
+                  <input type="text" name="inn" placeholder="ИНН"/>
                 </div>
               </div>
               <div class="form__col">
                 <div class="form__row">
-                  <input type="text" placeholder="Стоимость"/>
+                  <input type="text" name="price" placeholder="Стоимость"/>
                 </div>
               </div>
               <div class="form__col">
                 <div class="form__row">
-                  <input type="text" placeholder="Контактное лицо"/>
+                  <input type="text" name="name" placeholder="Контактное лицо"/>
                 </div>
               </div>
               <div class="form__col">
                 <div class="form__row">
-                  <input type="text" placeholder="Колличество"/>
+                  <input type="text" name="count" placeholder="Колличество"/>
                 </div>
               </div>
               <div class="form__col">
                 <div class="form__row">
-                  <input type="text" placeholder="Телефон*" required="required"/>
+                  <input type="tel" name="tel" placeholder="Телефон*" required="required"/>
                 </div>
               </div>
               <div class="form__col">
                 <div class="form__row">
-                  <input type="text" placeholder="Аванс"/>
+                  <input type="text" name="avans" placeholder="Аванс"/>
                 </div>
               </div>
               <div class="form__col">
                 <div class="form__row">
-                  <input type="text" placeholder="E-mail"/>
+                  <input type="text" name="email" placeholder="E-mail"/>
                 </div>
               </div>
               <div class="form__col">
                 <div class="form__row">
-                  <input type="text" placeholder="Срок лизинга"/>
+                  <input type="text" name="date" placeholder="Срок лизинга"/>
                 </div>
               </div>
               <div class="form__col">
                 <div class="form__row">
-                  <input type="text" placeholder="Местонахождение"/>
+                  <input type="text" name="place" placeholder="Местонахождение"/>
                 </div>
               </div>
               <div class="form__col form__col_full">
                 <div class="form__row">
-                  <textarea placeholder="Дополнительная информация"></textarea>
+                  <textarea name="info" placeholder="Дополнительная информация"></textarea>
                 </div>
               </div>
               <div class="form__col form__col_full">
@@ -692,6 +696,7 @@
               </div>
             </div>
           </div>
+          <div class="form__rezult"></div>
           <div class="modal-footer">
             <div class="form__grid form__action">
               <div class="form__col">
@@ -715,6 +720,7 @@
   <script src="js/slick.min.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/select2.min.js"></script>
+  <script src="js/jquery.touchSwipe.min.js"></script>
   <script src="js/function.min.js?1.2"></script>
   <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQpIS08g7YPH_GkF3n8oSxL3MVAWMXxh8&amp;language=ru&amp;region=RU&amp;callback=initMap"></script>
 </body>
