@@ -293,9 +293,9 @@ swichTabs();
 
 function initMap() {
     // 55.759906,37.5143593
-    var compCenter = {lat: 37.516485, lng: 55.760237};
-    var center = {lat: 37.516485, lng: 55.760237};
-    var zoom = 13;
+    var compCenter = {lat: 55.760237, lng: 37.516485};
+    var center = {lat: 55.760237, lng: 37.511485};
+    var zoom = 16;
 
     if (isXsWidth()) {
         center = compCenter;
