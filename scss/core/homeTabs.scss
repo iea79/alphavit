@@ -22,12 +22,13 @@
         transition: 0.3s;
         padding: 3% 5px;
         cursor: pointer;
+        width: 12.5%;
 
         @media (min-width: 768px) {
             border-radius: 12px;
             margin: 0 5px;
             padding: 28px 10px 26px;
-            width: 12.5%;
+            // width: 12.5%;
         }
 
         @media (min-width: 1200px) {

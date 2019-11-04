@@ -265,35 +265,36 @@ function swichTabs() {
     }
 
     $('.homePanes__item').swipe({
-        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-            // console.log(direction);
+        swipeLeft: function() {
             var count = $('.homePanes__item').length;
-            switch (direction) {
-                case 'left':
-                    if ($(this).index() === (count-1)) return false;
-                    $('.homePanes__item').removeClass('active');
-                    $('.homeTabs__item').removeClass('active');
-                    $(this).next().addClass('active');
-                    $('[data-swich="#'+$(this).attr("id")+'"]').next().addClass('active');
-                    break;
-                case 'right':
-                    if ($(this).index() === 0) return false;
-                    $('.homePanes__item').removeClass('active');
-                    $('.homeTabs__item').removeClass('active');
-                    $(this).prev().addClass('active');
-                    $('[data-swich="#'+$(this).attr("id")+'"]').prev().addClass('active');
-                    break;
-                default:
-            }
+            if ($(this).index() === (count-1)) return false;
+            $('.homePanes__item').removeClass('active');
+            $('.homeTabs__item').removeClass('active');
+            $(this).next().addClass('active');
+            $('[data-swich="#'+$(this).attr("id")+'"]').next().addClass('active');
+        },
+        swipeRight: function() {
+            var count = $('.homePanes__item').length;
+            if ($(this).index() === 0) return false;
+            $('.homePanes__item').removeClass('active');
+            $('.homeTabs__item').removeClass('active');
+            $(this).prev().addClass('active');
+            $('[data-swich="#'+$(this).attr("id")+'"]').prev().addClass('active');
         }
     });
 
+    if (isXsWidth()) {
+        $('.projectPanes__list').slick({
+            infinite: false
+        })
+    }
 };
 swichTabs();
 
 function initMap() {
-    var compCenter = {lat: 56.34431322385145, lng: 43.92857064999998};
-    var center = {lat: 56.34431322385145, lng: 43.88857064999998};
+    // 55.759906,37.5143593
+    var compCenter = {lat: 37.516485, lng: 55.760237};
+    var center = {lat: 37.516485, lng: 55.760237};
     var zoom = 13;
 
     if (isXsWidth()) {
@@ -479,6 +480,7 @@ function srollToId() {
     $('[data-scroll-to]').click( function(){
         var scroll_el = $(this).attr('href');
         if ($(scroll_el).length != 0) {
+            $('.header__bottom').removeClass('open');
             $('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 500);
         }
         return false;
