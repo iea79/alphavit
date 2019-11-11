@@ -28,7 +28,7 @@
     &__item {
         margin: 0 15px 55px;
         background: #FFFFFF;
-        box-shadow: 0 4px 30px rgba(33, 72, 119, 0.1);
+        box-shadow: 0 4px 15px rgba(33, 72, 119, 0.1);
         border-radius: 10px;
         transition: 0.3s;
         display: flex;
@@ -57,6 +57,7 @@
 
     &__img {
         background-color: #000;
+        border-radius: 10px 10px 0 0;
 
         img {
             display: block;

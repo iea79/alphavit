@@ -105,6 +105,88 @@
 @import 'core/profit';
 @import 'core/works';
 @import 'core/project';
+
+.slick {
+    &-slide {
+        outline: 0;
+    }
+
+    &-list {
+        // overflow: hidden;
+        @media (max-width: 1600px) {
+            padding-left: 15px;
+            padding-right: 15px;
+
+            &:after,
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                background-color: #fff;
+                width: 15px;
+                z-index: 9;
+            }
+
+            &:before {
+                left: 0;
+            }
+
+            &:after {
+                right: 0;
+            }
+        }
+    }
+
+    &-current {}
+
+    &-arrow {
+        position: absolute;
+        top: 50%;
+        margin-top: -20px;
+        font-size: 40px;
+        z-index: 10;
+        cursor: pointer;
+        color: #999;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &.icon {
+            &_next {
+                right: 0;
+                @media (min-width: 1600px) {
+                    right: -20px;
+                }
+
+                &:before {}
+            }
+
+            &_prev {
+                left: 0;
+                @media (min-width: 1600px) {
+                    left: -20px;
+                }
+
+                &:before {}
+            }
+        }
+
+        &.slick-disabled {
+            opacity: 0.1;
+        }
+    }
+
+    &-dots {
+        li {
+            &.slick-active {}
+
+            button {}
+        }
+    }
+}
+
 @import 'core/partners';
 @import 'core/map';
 

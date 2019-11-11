@@ -34,10 +34,6 @@ $(document).ready(function() {
 		event.preventDefault();
 	});
 
-    // Inputmask.js
-    // $('[name=tel]').inputmask("+9(999)999 99 99",{ showMaskOnHover: false });
-    // formSubmit();
-
     $('.partners__wrap').slick({
         infinite: false,
         slidesToShow: 4,
@@ -50,8 +46,6 @@ $(document).ready(function() {
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
-                    // infinite: true,
-                    // dots: true
                 }
             },
             {
@@ -68,15 +62,59 @@ $(document).ready(function() {
                     slidesToScroll: 1
                 }
             }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
         ]
     });
+    $('.sell__list').slick({
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        prevArrow: '<i class="icon_prev" />',
+        nextArrow: '<i class="icon_next" />',
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    // infinite: true,
+                    // dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+
 
     checkOnResize();
 
     $('select').select2();
+
+    $('.homePanes__item').swipe({
+        swipeLeft: function() {
+            var count = $('.homePanes__item').length;
+            if ($(this).index() === (count-1)) return false;
+            $('.homePanes__item').removeClass('active');
+            $('.homeTabs__item').removeClass('active');
+            $(this).next().addClass('active');
+            $('[data-swich="#'+$(this).attr("id")+'"]').next().addClass('active');
+        },
+        swipeRight: function() {
+            var count = $('.homePanes__item').length;
+            if ($(this).index() === 0) return false;
+            $('.homePanes__item').removeClass('active');
+            $('.homeTabs__item').removeClass('active');
+            $(this).prev().addClass('active');
+            $('[data-swich="#'+$(this).attr("id")+'"]').prev().addClass('active');
+        }
+    });
+
+    swichTabs();
 
 });
 
@@ -93,6 +131,40 @@ function checkOnResize() {
     // fontResize();
     // stikyMenu();
 }
+
+function slideProjects(el) {
+    var slider = $('.projectSlider');
+
+    $(el).appendTo(slider);
+
+    slider.slick({
+        infinite: false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        prevArrow: '<i class="icon_prev" />',
+        nextArrow: '<i class="icon_next" />',
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    })
+
+    slider.slick('clickAdd', $(el));
+}
+
+slideProjects('[data-filter]');
 
 function swichHomeTabs() {
     $('[data-swich]').on('click', function() {
@@ -117,60 +189,19 @@ function openMobileNav() {
 };
 openMobileNav();
 
-// Stiky menu // Липкое меню. При прокрутке к элементу #header добавляется класс .stiky который и стилизуем
-function stikyMenu() {
-    var wrapp;
-    if (isXsWidth()) {
-        wrapp = $('.header');
-    } else {
-        wrapp = $('.header__bottom');
-    };
-    var HeaderTop = wrapp.offset().top + $('.home').innerHeight();
-    var currentTop = $(window).scrollTop();
-
-    setNavbarPosition();
-
-    $(window).scroll(function(){
-        setNavbarPosition();
-    });
-
-    function setNavbarPosition() {
-        currentTop = $(window).scrollTop();
-
-        if( currentTop > HeaderTop ) {
-            wrapp.addClass('stiky');
-        } else {
-            wrapp.removeClass('stiky');
-        }
-
-        $('.navbar__link').each(function(index, el) {
-            var section = $(this).attr('href');
-
-            if ($('section').is(section)) {
-                var offset = $(section).offset().top;
-
-                if (offset <= currentTop && offset + $(section).innerHeight() > currentTop) {
-                    $(this).addClass('active');
-                } else {
-                    $(this).removeClass('active');
-                }
-            }
-        });
-    }
-};
-// stikyMenu();
-
 function swichTabs() {
 	var tab = $('[data-tab]'),
 		pane = $('[data-pane]'),
         more = $('.js_more'),
+        slider = $('.projectSlider'),
         item;
 
-	tab.on('click', function(e) {
-		// e.preventDefault();
+    // console.log('swichTabs');
 
-		// $(this).attr('data-tab') // data-tab
+	tab.on('click', function(e) {
 		var id = $(this).data('tab') // data-tab
+
+        console.log(id);
 
 		tab.removeClass('active');
 		$(this).addClass('active');
@@ -210,86 +241,43 @@ function swichTabs() {
 
 	});
 
-    more.on('click', function() {
-        var current = $('[data-tab].active').data('tab');
-        // console.log(current);
-        if (current == 'all') {
-            $('[data-filter]').removeClass('hidden');
-        } else {
-            $('[data-filter='+current+']').removeClass('hidden');
-        }
-        $(this).hide();
-    })
-
     function showAllItem() {
-        item = $('[data-filter]');
-        item.each(function(i) {
-            if (i < 4) {
-                // console.log($(this).data('filter'));
-                $(this).removeClass('hidden');
-                // more.hide();
-            } else {
-                $(this).addClass('hidden');
-                // more.show();
-            }
-        });
-        // console.log(item.length);
-        showMoreBtn(item.length);
+        slider.slick('unslick');
+        $('.projectSlider [data-filter]').appendTo('.projectPanes__list');
+        slideProjects('[data-filter]');
     }
-    showAllItem();
+    // showAllItem();
 
     function swichItem(id) {
-        $('[data-filter]').addClass('hidden');
+        var current = '[data-filter="'+id+'"]';
+        slider.slick('unslick');
 
-        item = $('[data-filter="'+id+'"]');
-        item.each(function(i) {
-            if (i < 4) {
-                // console.log($(this).data('filter'));
-                $(this).removeClass('hidden');
-                // more.hide();
-            } else {
-                $(this).addClass('hidden');
-                // more.show();
-            }
-        });
+        $('.projectSlider [data-filter]').appendTo('.projectPanes__list');
+
+        slideProjects(current);
+
+        // current.each(function(i) {
+        //     $(this).appendTo(slider);
+        // });
+
+        // $('.projectPanes__list').slick('unslick');
+        // slideProjects();
+
         // console.log(item.length);
-        showMoreBtn(item.length);
+        // showMoreBtn(item.length);
     }
+    //
+    // function showMoreBtn(i) {
+    //     if (i < 4) {
+    //         more.hide();
+    //     } else {
+    //         more.show();
+    //     }
+    // }
 
-    function showMoreBtn(i) {
-        if (i < 4) {
-            more.hide();
-        } else {
-            more.show();
-        }
-    }
-
-    $('.homePanes__item').swipe({
-        swipeLeft: function() {
-            var count = $('.homePanes__item').length;
-            if ($(this).index() === (count-1)) return false;
-            $('.homePanes__item').removeClass('active');
-            $('.homeTabs__item').removeClass('active');
-            $(this).next().addClass('active');
-            $('[data-swich="#'+$(this).attr("id")+'"]').next().addClass('active');
-        },
-        swipeRight: function() {
-            var count = $('.homePanes__item').length;
-            if ($(this).index() === 0) return false;
-            $('.homePanes__item').removeClass('active');
-            $('.homeTabs__item').removeClass('active');
-            $(this).prev().addClass('active');
-            $('[data-swich="#'+$(this).attr("id")+'"]').prev().addClass('active');
-        }
-    });
-
-    if (isXsWidth()) {
-        $('.projectPanes__list').slick({
-            infinite: false
-        })
-    }
 };
-swichTabs();
+// swichTabs();
+// console.log(swichTabs);
 
 function initMap() {
     // 55.759906,37.5143593
@@ -487,51 +475,6 @@ function srollToId() {
     });
 };
 srollToId();
-
-function fontResize() {
-    var windowWidth = $(window).width();
-    if (windowWidth >= 1200) {
-    	var fontSize = windowWidth/19.05;
-    } else if (windowWidth < 1200) {
-    	var fontSize = 60;
-    }
-	$('body').css('fontSize', fontSize + '%');
-}
-
-// Видео youtube для страницы
-function uploadYoutubeVideo() {
-    if ($(".js_youtube")) {
-
-        $(".js_youtube").each(function () {
-            // Зная идентификатор видео на YouTube, легко можно найти его миниатюру
-            $(this).css('background-image', 'url(http://i.ytimg.com/vi/' + this.id + '/sddefault.jpg)');
-
-            // Добавляем иконку Play поверх миниатюры, чтобы было похоже на видеоплеер
-            $(this).append($('<img src="img/play.svg" alt="Play" class="video__play">'));
-
-        });
-
-        $('.video__play, .video__prev').on('click', function () {
-            // создаем iframe со включенной опцией autoplay
-            var wrapp = $(this).closest('.js_youtube'),
-                videoId = wrapp.attr('id'),
-                iframe_url = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&autohide=1";
-
-            if ($(this).data('params')) iframe_url += '&' + $(this).data('params');
-
-            // Высота и ширина iframe должны быть такими же, как и у родительского блока
-            var iframe = $('<iframe/>', {
-                'frameborder': '0',
-                'src': iframe_url,
-            })
-
-            // Заменяем миниатюру HTML5 плеером с YouTube
-            $(this).closest('.video__wrapper').append(iframe);
-
-        });
-    }
-};
-
 
 // Простая проверка форм на заполненность и отправка аяксом
 function formSubmit() {
