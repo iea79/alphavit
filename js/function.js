@@ -255,29 +255,9 @@ function swichTabs() {
         $('.projectSlider [data-filter]').appendTo('.projectPanes__list');
 
         slideProjects(current);
-
-        // current.each(function(i) {
-        //     $(this).appendTo(slider);
-        // });
-
-        // $('.projectPanes__list').slick('unslick');
-        // slideProjects();
-
-        // console.log(item.length);
-        // showMoreBtn(item.length);
     }
-    //
-    // function showMoreBtn(i) {
-    //     if (i < 4) {
-    //         more.hide();
-    //     } else {
-    //         more.show();
-    //     }
-    // }
 
 };
-// swichTabs();
-// console.log(swichTabs);
 
 function initMap() {
     // 55.759906,37.5143593
