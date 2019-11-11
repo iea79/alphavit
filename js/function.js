@@ -115,6 +115,7 @@ $(document).ready(function() {
     });
 
     swichTabs();
+    swichHomeTabs();
 
 });
 
@@ -177,8 +178,6 @@ function swichHomeTabs() {
         $(id).addClass('active');
     })
 }
-
-swichHomeTabs();
 
 function openMobileNav() {
     $('.navbar__toggle').on('click', function() {
