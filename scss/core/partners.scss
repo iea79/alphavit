@@ -119,6 +119,10 @@
         align-items: center;
         width: 100%;
         padding: 30px;
+
+        img {
+            max-height: 124px;
+        }
     }
 
 }

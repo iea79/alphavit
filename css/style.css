@@ -2932,6 +2932,8 @@ input[type=checkbox]:disabled:checked:before, input[type=checkbox]:disabled:inde
     align-items: center;
     width: 100%;
     padding: 30px; }
+    .partners__link img {
+      max-height: 124px; }
 
 .map {
   position: relative;
