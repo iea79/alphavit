@@ -131,41 +131,11 @@ $(window).resize(function(event) {
 function checkOnResize() {
     // fontResize();
     // stikyMenu();
+    if (isXsWidth()) {
+        openMobileNav();
+    }
 }
 
-function slideProjects(el) {
-    var slider = $('.projectSlider');
-
-    $(el).appendTo(slider);
-
-    slider.slick({
-        infinite: false,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        prevArrow: '<i class="icon_prev" />',
-        nextArrow: '<i class="icon_next" />',
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    })
-
-    slider.slick('clickAdd', $(el));
-}
-
-slideProjects('[data-filter]');
 
 function swichHomeTabs() {
     $('[data-swich]').on('click', function() {
@@ -186,7 +156,7 @@ function openMobileNav() {
         wrapp.toggleClass('open');
     });
 };
-openMobileNav();
+
 
 function swichTabs() {
 	var tab = $('[data-tab]'),
@@ -242,7 +212,7 @@ function swichTabs() {
 
     function showAllItem() {
         slider.slick('unslick');
-        $('.projectSlider [data-filter]').appendTo('.projectPanes__list');
+        replaceItem();
         slideProjects('[data-filter]');
     }
     // showAllItem();
@@ -250,10 +220,13 @@ function swichTabs() {
     function swichItem(id) {
         var current = '[data-filter="'+id+'"]';
         slider.slick('unslick');
-
-        $('.projectSlider [data-filter]').appendTo('.projectPanes__list');
+        replaceItem();
 
         slideProjects(current);
+    }
+
+    function replaceItem() {
+        $('.projectSlider [data-filter]').appendTo('.projectPanes__list');
     }
 
 };
@@ -524,3 +497,36 @@ function formSubmit() {
     });
 }
 formSubmit();
+function slideProjects(el) {
+    var slider = $('.projectSlider');
+
+    $(el).appendTo(slider);
+
+    slider.slick({
+        infinite: false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        prevArrow: '<i class="icon_prev" />',
+        nextArrow: '<i class="icon_next" />',
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    })
+
+    slider.slick('clickAdd', $(el));
+}
+
+slideProjects('[data-filter]');
