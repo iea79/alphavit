@@ -1821,7 +1821,8 @@ input[type=checkbox]:disabled:checked:before, input[type=checkbox]:disabled:inde
         min-height: 789px; } }
     @media (max-width: 767px) {
       .homePanes__item {
-        padding-bottom: 30px; } }
+        padding-bottom: 30px;
+        min-height: 510px; } }
     .homePanes__item:after, .homePanes__item:before {
       position: absolute;
       top: 0;
