@@ -170,7 +170,7 @@ function swichTabs() {
 	tab.on('click', function(e) {
 		var id = $(this).data('tab') // data-tab
 
-        console.log(id);
+        // console.log(id);
 
 		tab.removeClass('active');
 		$(this).addClass('active');
@@ -215,7 +215,6 @@ function swichTabs() {
         replaceItem();
         slideProjects('[data-filter]');
     }
-    // showAllItem();
 
     function swichItem(id) {
         var current = '[data-filter="'+id+'"]';
@@ -499,8 +498,17 @@ function formSubmit() {
 formSubmit();
 function slideProjects(el) {
     var slider = $('.projectSlider');
+    if (slider.hasClass('click-initialize')) {
+        slider.slick('unslick');
+    }
+    $('.projectSlider [data-filter]').each(function(index, el) {
+        $(this).appendTo('.projectPanes__list');
+    });
 
-    $(el).appendTo(slider);
+    $(el).each(function(index, elem) {
+        // console.log(elem);
+        $(this).appendTo(slider);
+    });
 
     slider.slick({
         infinite: false,
@@ -525,8 +533,6 @@ function slideProjects(el) {
             }
         ]
     })
-
-    slider.slick('clickAdd', $(el));
 }
 
 slideProjects('[data-filter]');
