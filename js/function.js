@@ -7,6 +7,7 @@
  */
 
 var TempApp = {
+    pageScroll: '',
     lgWidth: 1200,
     mdWidth: 992,
     smWidth: 768,
@@ -117,6 +118,12 @@ $(document).ready(function() {
     swichTabs();
     swichHomeTabs();
 
+    $('[data-subject]').on('click', function() {
+        var form = $(this).data('target');
+        // console.log(form);
+        $(form).find('[name=subject]').val($(this).data('subject'));
+    })
+
 });
 
 $(window).resize(function(event) {
@@ -156,6 +163,53 @@ function openMobileNav() {
         wrapp.toggleClass('open');
     });
 };
+
+// Stiky menu // Липкое меню. При прокрутке к элементу #header добавляется класс .stiky который и стилизуем
+function stikyMenu() {
+    var HeaderTop = $('header').offset().top;
+    var tempScrollTop, currentScrollTop = 0;
+
+    setNavbarPosition();
+
+    $(window).scroll(function(){
+        setNavbarPosition();
+    });
+
+    function setNavbarPosition() {
+
+        currentScrollTop = $(window).scrollTop();
+        if (TempApp.pageScroll == 'down') {
+            $('header').removeClass('stiky');
+        } else if (TempApp.pageScroll == 'up') {
+            if (currentScrollTop < $('.home').innerHeight()) {
+                $('header').removeClass('stiky');
+            } else {
+                $('header').addClass('stiky');
+            }
+        }
+
+        tempScrollTop = currentScrollTop;
+    }
+};
+stikyMenu();
+
+function checkDirectionScroll() {
+    var tempScrollTop, currentScrollTop = 0;
+
+    $(window).scroll(function(){
+        currentScrollTop = $(window).scrollTop();
+
+        if (tempScrollTop < currentScrollTop ) {
+            TempApp.pageScroll = "down";
+        } else if (tempScrollTop > currentScrollTop ) {
+            TempApp.pageScroll = "up";
+        }
+        tempScrollTop = currentScrollTop;
+
+    });
+}
+checkDirectionScroll();
+
 
 
 function swichTabs() {
@@ -418,9 +472,14 @@ function initMap() {
 function srollToId() {
     $('[data-scroll-to]').click( function(){
         var scroll_el = $(this).attr('href');
+
+        // console.log(headerHey);
         if ($(scroll_el).length != 0) {
             $('.header__bottom').removeClass('open');
-            $('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 500);
+            $('html, body').animate({ scrollTop: $(scroll_el).offset().top - $('.header').innerHeight() }, 500);
+            setTimeout(function () {
+                $('.header').addClass('stiky');
+            }, 600);
         }
         return false;
     });
@@ -436,6 +495,7 @@ function formSubmit() {
         var form_data = form.serialize();
         var field = form.find('[required]');
         // console.log(form_data);
+
 
         empty = 0;
 
@@ -455,6 +515,8 @@ function formSubmit() {
         if (empty > 0) {
             return false;
         } else {
+            form.find('[name=antispam]').val('nobot');
+
             $.ajax({
                 url: url,
                 type: "POST",

@@ -168,10 +168,21 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	padding: 10px 15px;
 	background-color: #0159dd;
 	z-index: 100;
 	box-shadow: 0 4px 30px rgba(#000, .1);
+
+	@media (min-width: 768px) {
+		padding: 5px;
+
+		.header__top {
+			display: none;
+		}
+
+		.header__bottom {
+			padding: 0;
+		}
+	}
 
 	@media (min-width: 768px) {
 		background-color: $color_withe;

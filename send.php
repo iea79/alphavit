@@ -1,7 +1,8 @@
 <?php
-if ((isset($_POST['name']) && $_POST['name'] != "")) { //Проверка отправилось ли наше поля name и не пустые ли они
-    $to = 'busforward@gmail.com, sav.sobol@ya.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
-    $subject = 'Заявка с сайта';
+if ((isset($_POST['antispam']) && $_POST['antispam'] != "")) { //Проверка отправилось ли наше поля name и не пустые ли они
+    $to = 'busforward@gmail.com'; //Почта получателя, через запятую можно указать сколько угодно адресов
+    // $to = 'busforward@gmail.com, sav.sobol@ya.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
+    $subject = $_POST['subject'];
     $message = '
     <html>
         <head>
@@ -27,4 +28,8 @@ if ((isset($_POST['name']) && $_POST['name'] != "")) { //Проверка отп
     } else {
         echo 'error';
     }
-}?>
+} else {
+    echo 'bot';
+}
+
+?>

@@ -1077,11 +1077,17 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 15px;
   background-color: #0159dd;
   z-index: 100;
   -webkit-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
+  @media (min-width: 768px) {
+    .stiky {
+      padding: 5px; }
+      .stiky .header__top {
+        display: none; }
+      .stiky .header__bottom {
+        padding: 0; } }
   @media (min-width: 768px) {
     .stiky {
       background-color: #ffffff; } }
