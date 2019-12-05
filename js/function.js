@@ -138,9 +138,6 @@ $(window).resize(function(event) {
 function checkOnResize() {
     // fontResize();
     // stikyMenu();
-    if (isXsWidth()) {
-        openMobileNav();
-    }
 }
 
 
@@ -163,11 +160,11 @@ function openMobileNav() {
         wrapp.toggleClass('open');
     });
 };
+openMobileNav();
 
 // Stiky menu // Липкое меню. При прокрутке к элементу #header добавляется класс .stiky который и стилизуем
 function stikyMenu() {
     var HeaderTop = $('header').offset().top;
-    var tempScrollTop, currentScrollTop = 0;
 
     setNavbarPosition();
 
@@ -177,7 +174,7 @@ function stikyMenu() {
 
     function setNavbarPosition() {
 
-        currentScrollTop = $(window).scrollTop();
+        var currentScrollTop = $(window).scrollTop();
         if (TempApp.pageScroll == 'down') {
             $('header').removeClass('stiky');
         } else if (TempApp.pageScroll == 'up') {
@@ -187,8 +184,6 @@ function stikyMenu() {
                 $('header').addClass('stiky');
             }
         }
-
-        tempScrollTop = currentScrollTop;
     }
 };
 stikyMenu();

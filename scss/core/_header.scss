@@ -172,8 +172,9 @@
 	z-index: 100;
 	box-shadow: 0 4px 30px rgba(#000, .1);
 
-	@media (min-width: 768px) {
+	@media (min-width: 992px) {
 		padding: 5px;
+		background-color: $color_withe;
 
 		.header__top {
 			display: none;
@@ -182,9 +183,12 @@
 		.header__bottom {
 			padding: 0;
 		}
+
+		.btn_plus {
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
 	}
 
-	@media (min-width: 768px) {
-		background-color: $color_withe;
-	}
+	@media (min-width: 768px) {}
 }

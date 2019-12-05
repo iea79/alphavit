@@ -1081,16 +1081,17 @@ body {
   z-index: 100;
   -webkit-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     .stiky {
-      padding: 5px; }
+      padding: 5px;
+      background-color: #ffffff; }
       .stiky .header__top {
         display: none; }
       .stiky .header__bottom {
-        padding: 0; } }
-  @media (min-width: 768px) {
-    .stiky {
-      background-color: #ffffff; } }
+        padding: 0; }
+      .stiky .btn_plus {
+        padding-top: 15px;
+        padding-bottom: 15px; } }
 
 /* Navbar
 -------------------------------------------------------------------------------*/
